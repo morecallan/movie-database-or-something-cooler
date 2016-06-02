@@ -1,0 +1,13 @@
+@import "partials/body";
+@import "partials/main-container";
+@import "partials/movie-display";
+@import "partials/nav";
+@import "partials/reg-login";
+@import "partials/search";
+@import "partials/splash";
+
+@import "modules/colors";
+
+body {
+    background-color: blue;
+}

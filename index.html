@@ -1,0 +1,56 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> MOVIE DATABASE OR SOMETHING COOLER THAN THAT </title>
+  <!-- Materialize: Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+  <!-- Materialize: NECESSARY FOR ICONS -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- WHAT GOOGLE FONTS SHALL WE USE? -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
+</head>
+
+
+<body ng-app="MovieDatabaseApp">
+
+  <!-- BEGINNING OF NAV -->
+  <!-- END OF NAV BAR -->
+
+  
+
+  <!-- CONTAINER FOR VIEW AND NEW -->
+  <div class="container" ng-view></div>
+  <!-- END OF CONTAINER FOR VIEW AND NEW -->
+  
+
+  <!-- Materialize: jQuery (necessary for Materialize's JavaScript plugins) -->
+  <script src="lib/bower_components/jquery/dist/jquery.min.js"></script>
+  <!-- Angular: Latest compiled and minified JavaScript -->
+  <script src="lib/bower_components/angular/angular.min.js"></script>
+  <!-- Angular Route: Latest compiled and minified JavaScript -->
+  <script src="lib/bower_components/angular-route/angular-route.min.js"></script>
+  <script src="lib/bower_components/firebase/firebase.js"></script>
+  <script src="lib/bower_components/angularfire/dist/angularfire.min.js"></script>
+  <!-- Materialize: Latest compiled and minified JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.1.8/angular-materialize.min.js"></script>
+  <!-- APP FIRST -->
+  <script type="text/javascript" src="app/app.js"></script>
+  <!-- FACTORIES SECOND -->
+  <script type="text/javascript" src="app/factories/AuthFactory.js"></script>
+  <script type="text/javascript" src="app/factories/APIFactory.js"></script>
+  <script type="text/javascript" src="app/factories/MovieListFactory.js"></script>
+  <!-- CONTROLLERS LAST -->
+  <script type="text/javascript" src="app/controllers/LoginCtrl.js"></script>
+  <script type="text/javascript" src="app/controllers/ListExternalCtrl.js"></script>
+  <script type="text/javascript" src="app/controllers/ListViewCtrl.js"></script>
+  <script type="text/javascript" src="app/controllers/ListEditCtrl.js"></script>
+  <script type="text/javascript" src="app/controllers/RatingCtrl.js"></script>
+
+</body>
+</html>
