@@ -1,0 +1,17 @@
+{
+  "name": "lib",
+  "homepage": "https://github.com/abidina/movie-database-or-something-cooler",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "Materialize": "materialize#^0.97.6"
+  }
+}
