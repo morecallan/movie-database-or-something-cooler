@@ -1,3 +1,5 @@
+"use strict";
+
 var app = angular.module("MovieDatabaseApp", ["ngRoute"])
     .constant("firebaseURL","https://supercoolmoviedb.firebaseio.com/");
 
@@ -19,6 +21,7 @@ app.config(function($routeProvider) {
         .when("/register", {
             templateUrl: "partials/search.html",
             controller:  "SearchExternalCtrl"
+        })
         .when("/login", {
             templateUrl: "partials/login-reg.html",
             controller:  "LoginCtrl"
