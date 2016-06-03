@@ -17,8 +17,12 @@ app.config(function($routeProvider) {
             resolve: {isAuth}
         })
         .when("/register", {
-            templateUrl: "partials/test.html",
-            controller:  "ListEditCtrl"
+            templateUrl: "partials/login-red.html",
+            controller:  "LoginCtrl"
+        })
+        .when("/login", {
+            templateUrl: "partials/login-reg.html",
+            controller:  "LoginCtrl"
         })
         .otherwise("/"); 
 });

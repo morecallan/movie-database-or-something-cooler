@@ -1,0 +1,20 @@
+<!-- BEGINNING OF NAV -->
+  <nav>
+    <div class="nav-wrapper teal darken-3">
+            <img class="nav-img" src="img/movie-dog.png">
+            <a class="brand-logo app-title">Movie Time</a>
+
+          <ul id="nav-mobile" class="right">
+            <li ng-show="isActive"><a ng-href="#/movies/search"><i class="material-icons left">search</i>Search Movies</a></li>
+            <li ng-show="isActive"><a ng-href="#/movies/list"><i class="material-icons left">local_movies</i>Watch List</a></li>
+            <li >
+              <a ng-href="#/logout" ng-show="isActive"><i class="material-icons left">perm_identity</i>Logout</a>
+            </li>
+            <li>
+              <a ng-href="#/login"  ng-show="!isActive">
+              <i class="material-icons left">perm_identity</i>Login</a>
+            </li>
+          </ul>
+    </div>
+  </nav>
+  <!-- END OF NAV BAR -->

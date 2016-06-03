@@ -1,17 +1,13 @@
-"use strict";
+app.directive('starRating', starRating);
 
-
-app.controller('RatingCtrl', RatingCtrl)
- .directive('starRating', starRating);
-
-  function RatingCtrl() {
+  function RatingController() {
     this.rating1 = 5;
     this.rating2 = 2;
     this.isReadonly = true;
     this.rateFunction = function(rating) {
       console.log('Rating selected: ' + rating);
     };
-  };
+  }
 
   function starRating() {
     return {
@@ -19,12 +15,12 @@ app.controller('RatingCtrl', RatingCtrl)
       template:
         '<ul class="star-rating" ng-class="{readonly: readonly}">' +
         '  <li ng-repeat="star in stars" class="star" ng-class="{filled: star.filled}" ng-click="toggle($index)">' +
-        '    <i class="material-icons" ng-show="!filled">star_border</i>' + 
-        '    <i class="material-icons" ng-show="filled">star</i>' + 
+        '    <i class="">star</i>' + // or &#9733
         '  </li>' +
         '</ul>',
       scope: {
         ratingValue: '=ngModel',
+        max: '=?', // optional (default is 5)
         onRatingSelect: '&?',
         readonly: '=?'
       },
@@ -54,5 +50,6 @@ app.controller('RatingCtrl', RatingCtrl)
           }
         });
       }
-    }
-  };
+    };
+  }
+})();
