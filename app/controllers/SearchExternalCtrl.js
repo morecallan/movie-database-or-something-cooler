@@ -1,12 +1,15 @@
 "use strict";
 
 
-app.controller('SearchExternalCtrl', function ($scope) {
+app.controller('SearchExternalCtrl', function ($scope, APIFactory) {
 
     /********************************************
     **        Variables for PAGE VIEW          **
     ********************************************/
-    $scope.welcome = "Hello World";
-    console.log("Does this show?", $scope.welcome);
+
+    $scope.submitSearchText = function() {
+      console.log($scope.searchText);
+      APIFactory.movieList($scope.searchText);
+    }
 
 });
