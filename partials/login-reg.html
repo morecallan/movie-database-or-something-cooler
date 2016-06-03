@@ -1,0 +1,69 @@
+
+<div class="main-container z-depth-1">
+    
+  <ul class="pagination">
+    <li class="waves-effect" ng-hide="!modeLogin"><a href="/#/register">Register</a></li>
+    <li class="active" ng-hide="modeLogin"><a href="/#/register">Register</a></li>
+    <li class="waves-effect" ng-hide="modeLogin"><a href="/#/login">Login</a></li>
+    <li class="active" ng-hide="!modeLogin"><a href="/#/login">Login</a></li>
+  </ul>
+
+  <form ng-hide="modeLogin" id="add-new-user">
+
+        <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">email</i>
+              <input type="email" autocomplete="nope" ng-model="account.email">
+              <label>Email</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">security</i>
+              <input type="password" autocomplete="nope" ng-model="account.password">
+              <label>Password</label>
+            </div>
+        </div>
+    
+    <button class="btn" ng-click="register()"><i class="material-icons left">person_add</i>Register</button>
+        
+    </form>
+
+
+    <form id="login" ng-hide="!modeLogin">
+      <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">email</i>
+              <input type="email" autofocus="true" autocomplete="nope" ng-model="account.email">
+              <label>Email</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">security</i>
+              <input type="password" autocomplete="nope" ng-model="account.password">
+              <label>Password</label>
+            </div>
+        </div>
+
+        <button class="btn" ng-click="login()"><i class="material-icons left">person_add</i>Login</button>
+    </form>
+</div>
+
+
+
+
+<!-- Modal Structure -->
+
+
+<div class="mockmodal" ng-keypress="closeModal()" ng-click="closeModal()" id="errorMessageBox" autofocus="true" ng-show="userError">
+  <a  class="waves-effect waves-green btn-floating"><i class="material-icons left">close</i></a>
+
+  <div class="mockmodal-content">
+    <h4>Oops! Houston we have a problem.</h4>
+    <p>{{errorMessage}}</p>
+  </div>
+    
+</div>
