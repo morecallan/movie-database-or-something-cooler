@@ -17,8 +17,8 @@ app.config(function($routeProvider) {
             resolve: {isAuth}
         })
         .when("/register", {
-            templateUrl: "partials/test.html",
-            controller:  "ListEditCtrl"
+            templateUrl: "partials/search.html",
+            controller:  "SearchExternalCtrl"
         })
         .otherwise("/"); 
 });
