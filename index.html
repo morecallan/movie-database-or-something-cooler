@@ -12,19 +12,24 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- WHAT GOOGLE FONTS SHALL WE USE? -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
 
 
 <body ng-app="MovieDatabaseApp">
 
+    
+    
+
   <!-- BEGINNING OF NAV -->
+  <div ng-include="'./partials/nav.html'"></div>
   <!-- END OF NAV BAR -->
 
   
 
   <!-- CONTAINER FOR VIEW AND NEW -->
-  <div class="container" ng-view></div>
+  <div class="main-container-bg container"><div id="main-container" class="container" ng-view></div></div>
   <!-- END OF CONTAINER FOR VIEW AND NEW -->
   
 

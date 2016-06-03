@@ -1,1 +1,23 @@
 @import "../modules/colors";
+
+
+.main-container-bg {
+    background: url(../img/film.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 80%;
+}
+
+#main-container {
+    width: 100%;
+}
+
+.main-container {
+    position: relative;
+    background-color: rgba(0, 0, 0, .3);
+
+    margin-top: 20px;
+    height: 500px;
+    padding: 70px;
+    text-align: center;
+}

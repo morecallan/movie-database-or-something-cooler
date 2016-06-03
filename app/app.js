@@ -19,6 +19,9 @@ app.config(function($routeProvider) {
         .when("/register", {
             templateUrl: "partials/search.html",
             controller:  "SearchExternalCtrl"
+        .when("/login", {
+            templateUrl: "partials/login-reg.html",
+            controller:  "LoginCtrl"
         })
         .otherwise("/"); 
 });
