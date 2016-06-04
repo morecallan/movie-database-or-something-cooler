@@ -3,8 +3,9 @@
   background-size: 100% 100%;
   background-repeat: no-repeat;
   height: 500px;
-  width: 76em;
+  width: 90%;
   margin-top: 30px;
+  margin-left: 5%;
   z-index: 1;
   -webkit-filter: opacity(0.7);
   -webkit-filter: invert(1); }
@@ -16,9 +17,10 @@
   z-index: 9999;
   position: absolute;
   top: 64px;
-  left: 2em;
+  max-width: 90%;
+  left: 2.5%;
+  right: 0;
   height: 500px;
-  max-width: 76em;
   overflow-y: hidden;
   overflow-x: auto;
   background-color: rgba(112, 128, 144, 0.3);
@@ -32,7 +34,7 @@
 .card-movies-detail {
   position: sticky;
   top: -401px;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.8);
   width: 175px;
   height: 325px;
   margin: 5px 15px;
