@@ -8,6 +8,28 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
     ********************************************/
     $scope.currentSelectedMovieDetails = [];
 
+    $scope.stars = [{filled: false}, {filled: false}, {filled: false}, {filled: false}, {filled: false}];
+
+    $scope.ratingPreviewFill = function(movie, index) {
+        if (!$scope.stars[index].filled) {
+            for (var i = 0; i <= index; i++) {
+                $scope.stars[i].filled = true;
+            }
+        } else if ($scope.stars[index].filled) {
+            for (var i = index+1; i < $scope.stars.length; i++) {
+                $scope.stars[i].filled = false;
+            }
+        
+        }
+    }
+
+    $scope.ratecurrentSelectedMovie = function(currentMovie, index) {
+        let rating = index + 1;
+        currentMovie.rating = rating;
+        currentMovie.watched = true;
+        MovieListFactory.updatedWatchListBasedOnRating(currentMovie);
+    }
+
     $scope.showDetails = function(movie) {
         let movieID = movie.imdbID;
         APIFactory.getMovieDetailsFromId(movieID).then((movieResultsFromDatabase) => {

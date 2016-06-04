@@ -11,5 +11,12 @@
           <p>{{movie.Year}}</p>
         </div>
       </div>
+
+      <ul class="star-rating">
+          <li ng-repeat="star in stars" class="star" ng-class="{filled: star.filled}" ng-click="ratecurrentSelectedMovie(movie, $index)" ng-mouseover="ratingPreviewFill(movie.$index, $index)">
+            <i class="material-icons" ng-show="!star.filled">star_border</i>
+            <i class="material-icons" ng-show="star.filled">star</i>
+          </li>
+        </ul>
     </div>
   </div>

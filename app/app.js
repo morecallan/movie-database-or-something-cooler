@@ -42,10 +42,6 @@ app.config(function($routeProvider) {
             templateUrl: "partials/login-reg.html",
             controller:  "LoginCtrl"
         })
-        .when("/rating", {
-            templateUrl: "partials/rating.html",
-            controller:  "RatingCtrl"
-        })
         .otherwise("/"); 
 });
 
@@ -55,7 +51,7 @@ app.run(($location) => {
 
     contactRef.onAuth(authData => {
         if(!authData) {
-            $location.path("/rating");
+            $location.path("/login");
         }
     })
 });
