@@ -70,7 +70,7 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
     //Add Searched Movie to My Watch List
     $scope.addToWatchList=function(moviesFromDatabase){
         MovieListFactory.addToWatchList(moviesFromDatabase).then(function(response){
-            Materialize.toast('Movie added!', 4000, 'red accent-4');
+            Materialize.toast('Movie added!', 4000, 'teal');
         })
     };
 
