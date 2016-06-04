@@ -75,6 +75,14 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
         });
     };
 
+
+    //toggle functionality
+    $scope.sort=function() {
+        console.log("hello sorted movies");
+    };
+    
+    // $scope.toggleView = false;
+
     $scope.showWatchList();
 
 });

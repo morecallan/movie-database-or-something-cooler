@@ -1,7 +1,17 @@
 
+<!-- Switch -->
+<div class="switch">
+  <label>
+    To Watch
+    <input type="checkbox" ng-model="toggleView">
+    <span class="lever"></span>
+    Watched
+  </label>
+</div>
+
 <div class="movie-display">
   <div ng-repeat="movie in watchListMovies">
-      <div class="card">
+      <div class="card" ng-hide="toggleView ? !movie.watched : movie.watched">
         <div class="card-image">
           <img src="{{movie.Poster}}">
         </div>
