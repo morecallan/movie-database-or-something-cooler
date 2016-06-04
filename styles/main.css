@@ -18,6 +18,23 @@
 .nav-img {
   width: 5.3%; }
 
+.mockmodal {
+  box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+  z-index: 1000;
+  position: relative;
+  top: -23%;
+  left: 27%;
+  background-color: #EE6E73;
+  color: white;
+  padding: 15px;
+  height: 100px;
+  width: 50%;
+  overflow-y: auto;
+  border-radius: 2px; }
+
+.mockmodal:focus {
+  outline: none; }
+
 body {
   background-color: #263238;
   font-family: 'Acme', sans-serif; }
