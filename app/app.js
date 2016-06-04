@@ -1,7 +1,7 @@
 "use strict";
 
 var app = angular.module("MovieDatabaseApp", ["ngRoute"])
-    .constant("firebaseURL","https://supercoolmoviedb.firebaseio.com/");
+    .constant("firebaseURL", "https://supercoolmoviedb.firebaseio.com/");
 
 let isAuth = (AuthFactory) => new Promise((resolve, reject) => {
     if (AuthFactory.isAuthenticated()) {
@@ -18,11 +18,15 @@ app.config(function($routeProvider) {
             controller:  "ListEditCtrl",
             resolve: {isAuth}
         })
-        .when("/register", {
+        .when("/search", {
             templateUrl: "partials/search.html",
             controller:  "SearchExternalCtrl"
         })
         .when("/login", {
+            templateUrl: "partials/login-reg.html",
+            controller:  "LoginCtrl"
+        })
+        .when("/register", {
             templateUrl: "partials/login-reg.html",
             controller:  "LoginCtrl"
         })

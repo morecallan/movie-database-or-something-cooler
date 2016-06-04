@@ -9,7 +9,7 @@
 
 .main-container {
   position: relative;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(112, 128, 144, 0.3);
   margin-top: 20px;
   height: 500px;
   padding: 70px;
@@ -17,6 +17,17 @@
 
 .nav-img {
   width: 5.3%; }
+
+.login-reg .pagination {
+  margin: 10px auto;
+  width: 18%;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 5px; }
+  .login-reg .pagination .active {
+    background-color: rgba(213, 0, 0, 0.9); }
+
+.login-reg .btn {
+  background-color: #d50000; }
 
 .mockmodal {
   box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
