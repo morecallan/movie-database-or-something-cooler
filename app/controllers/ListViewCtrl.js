@@ -8,5 +8,7 @@ app.controller('ListViewCtrl', function ($scope) {
     ********************************************/
     $scope.welcome = "Hello World";
     console.log("Does this show?", $scope.welcome);
+    
+
 
 });
