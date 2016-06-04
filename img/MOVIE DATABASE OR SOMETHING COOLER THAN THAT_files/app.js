@@ -18,13 +18,9 @@ app.config(function($routeProvider) {
             controller:  "ListEditCtrl",
             resolve: {isAuth}
         })
-        .when("/results", {
-            templateUrl: "partials/list.html",
-            controller:  "ListExternalCtrl",
-        })
         .when("/search", {
             templateUrl: "partials/search.html",
-            controller:  "SearchExternalCtrl",
+            controller:  "SearchExternalCtrl"
         })
         .when("/login", {
             templateUrl: "partials/login-reg.html",
@@ -43,7 +39,7 @@ app.run(($location) => {
 
     contactRef.onAuth(authData => {
         if(!authData) {
-            $location.path("/search");
+            $location.path("/login");
         }
     })
 });

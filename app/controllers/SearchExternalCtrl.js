@@ -1,15 +1,23 @@
 "use strict";
 
 
-app.controller('SearchExternalCtrl', function ($scope, APIFactory) {
+app.controller('SearchExternalCtrl', function ($scope, $location, $rootScope, APIFactory) {
 
     /********************************************
     **        Variables for PAGE VIEW          **
     ********************************************/
+    $rootScope.moviesFromDatabase = []
+
 
     $scope.submitSearchText = function() {
-      console.log($scope.searchText);
-      APIFactory.movieList($scope.searchText);
+      APIFactory.movieList($scope.searchText)
+      .then((movieResultsFromDatabase) => {
+            $rootScope.moviesFromDatabase = movieResultsFromDatabase.Search;
+            $rootScope.moviesFromDatabase.forEach(function(movie) {
+                movie.detailsMode = false;
+            })
+            $location.path("/results");
+        });
     }
 
 });
