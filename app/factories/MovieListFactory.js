@@ -24,12 +24,19 @@ app.factory("MovieListFactory", function($q, $http,AuthFactory){
         })
     }
 
+    
     //get watch list from firebase
     var myMovieList = function(){
+        var user=AuthFactory.getUser();
+        var items=[];
+        
         return $q(function(resolve, reject){
-          $http.get(`https://supercoolmoviedb.firebaseio.com/movies.json`)
+          $http.get(`https://supercoolmoviedb.firebaseio.com/movies.json?orderBy="uid"&equalTo="${user.uid}"`)
             .success(function(returnObject){ 
-                resolve(returnObject);
+                Object.keys(returnObject).forEach(function(key){
+                items.push(returnObject[key]);
+            });
+                resolve(items);
             })
             .error(function(error){
                 reject(error);

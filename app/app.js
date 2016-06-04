@@ -22,11 +22,19 @@ app.config(function($routeProvider) {
             templateUrl: "partials/list.html",
             controller:  "ListExternalCtrl",
         })
+        .when("/list",{
+            templateUrl: "partials/watchList.html",
+            controller:  "ListExternalCtrl",
+        })
         .when("/search", {
             templateUrl: "partials/search.html",
             controller:  "SearchExternalCtrl",
         })
         .when("/login", {
+            templateUrl: "partials/login-reg.html",
+            controller:  "LoginCtrl"
+        })
+        .when("/logout",{
             templateUrl: "partials/login-reg.html",
             controller:  "LoginCtrl"
         })
