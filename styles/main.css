@@ -107,7 +107,10 @@
 
 .star-rating {
   margin: 0;
-  padding: 0;
+  margin-top: 20px;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 7px;
+  padding: 5px;
   display: inline-block; }
   .star-rating .star {
     padding: 1px;
@@ -138,18 +141,26 @@
   background-color: #d50000; }
 
 .mockmodal {
-  box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+  box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.22), 0 12.5px px 0 rgba(0, 0, 0, 0.21);
   z-index: 1000;
-  position: relative;
-  top: -23%;
+  position: absolute;
+  top: 1%;
   left: 27%;
-  background-color: #EE6E73;
+  background-color: rgba(0, 0, 0, 0.9);
   color: white;
-  padding: 15px;
-  height: 100px;
+  padding: 2px;
+  height: 70px;
   width: 50%;
   overflow-y: auto;
-  border-radius: 2px; }
+  border-radius: 10px; }
+  .mockmodal .btn {
+    background-color: #009688;
+    margin: 10px 20px; }
+  .mockmodal.switch {
+    padding: 15px 7px 0;
+    font-size: 20px;
+    width: 20%;
+    left: 80%; }
 
 .mockmodal:focus {
   outline: none; }

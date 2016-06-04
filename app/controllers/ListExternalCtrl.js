@@ -62,7 +62,7 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
     $scope.addToWatchList=function(moviesFromDatabase){
         MovieListFactory.addToWatchList(moviesFromDatabase).then(function(response){
             console.log("post", response);
-
+            Materialize.toast('Movie added!', 4000, 'red accent-4');
         })
     };
 

@@ -2,8 +2,12 @@
 
 .star-rating {
   margin: 0;
-  padding: 0;
+  margin-top: 20px;
+  background-color: rgba(0, 0, 0, .9);
+  border-radius: 7px;
+  padding: 5px;
   display: inline-block;
+
   
   .star {
     padding: 1px;
