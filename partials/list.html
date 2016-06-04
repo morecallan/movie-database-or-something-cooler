@@ -11,13 +11,7 @@
         </div>
       </div>
   
-      <div class="card card-movies-detail" ng-show="movie.detailsMode">
-        <div class="card-content red accent-4">
-          <p>{{currentSelectedMovieDetails.Rated}}</p>
-          <p>{{currentSelectedMovieDetails.Runtime}}</p>
-          <p>{{currentSelectedMovieDetails.Plot}}</p>
-        </div>
-      </div>
+      
        
 
 
@@ -29,6 +23,15 @@
           <li><a class="btn-floating teal"><i class="material-icons" ng-click="addToWatchList(movie)">add_circle</i></a></li>
           <li><a class="btn-floating yellow darken-1" ng-click="showDetails(movie)"><i class="material-icons">details</i></a></li>
         </ul>
+      </div>
+
+
+      <div class="card card-movies-detail" ng-show="movie.detailsMode">
+        <div class="card-content red accent-4">
+          <p>{{currentSelectedMovieDetails.Rated}}</p>
+          <p>{{currentSelectedMovieDetails.Runtime}}</p>
+          <p>{{currentSelectedMovieDetails.Plot}}</p>
+        </div>
       </div>
     </div>
   </div>
