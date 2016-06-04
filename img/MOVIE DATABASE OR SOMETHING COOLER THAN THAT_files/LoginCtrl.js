@@ -58,8 +58,13 @@ app.controller('LoginCtrl', function ($scope, $location, $rootScope, firebaseURL
         AuthFactory
         .authenticate($rootScope.account)
         .then((userCreds) => {
+            AuthFactory.returnUserDetails(userCreds).then((results) => {
+                let resultingUserKey = Object.keys(results)[0]
+                let currentUser = results[resultingUserKey]
+                $rootScope.account = currentUser;
+            });
             $scope.$apply(function() {
-                $location.path("/search");
+                $location.path("/");
                 $rootScope.isActive = true;
             })
         })

@@ -5,19 +5,34 @@
     background: url(../img/film.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    width: 80%;
+    height: 500px;
+    width: 76em;
+    margin-top: 30px;
+    z-index: 1;
+    -webkit-filter: opacity(.7);
+    -webkit-filter: invert(1);
 }
 
 #main-container {
     width: 100%;
 }
 
-.main-container {
-    position: relative;
-    background-color: rgba(112, 128, 144, .3);
-
-    margin-top: 20px;
+.main-container-movie {
+    z-index: 9999;
+    position: absolute;
+    top: 64px;
+    left: 2em;
     height: 500px;
-    padding: 70px;
+    max-width: 76em;
+    overflow-y: hidden;
+    overflow-x: auto;
+    background-color: rgba(112, 128, 144, .3);
+    -webkit-filter: invert(1);
+
+    margin: 30px;
+    height: 500px;
+    padding: 80px;
     text-align: center;
+
+    color: white;
 }
