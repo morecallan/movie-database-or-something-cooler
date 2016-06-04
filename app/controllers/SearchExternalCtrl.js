@@ -13,7 +13,9 @@ app.controller('SearchExternalCtrl', function ($scope, $location, $rootScope, AP
       APIFactory.movieList($scope.searchText)
       .then((movieResultsFromDatabase) => {
             $rootScope.moviesFromDatabase = movieResultsFromDatabase.Search;
-            console.log($rootScope.moviesFromDatabase);
+            $rootScope.moviesFromDatabase.forEach(function(movie) {
+                movie.detailsMode = false;
+            })
             $location.path("/results");
         });
     }

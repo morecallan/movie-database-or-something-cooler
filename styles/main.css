@@ -29,6 +29,15 @@
   text-align: center;
   color: white; }
 
+.card-movies-detail {
+  position: sticky;
+  top: -335px;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 175px;
+  height: 325px;
+  margin: 5px 15px;
+  font-size: 10px; }
+
 .movie-display {
   display: flex;
   flex-wrap: no-wrap;
