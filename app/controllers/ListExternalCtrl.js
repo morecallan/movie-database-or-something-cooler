@@ -7,14 +7,11 @@ app.controller('ListExternalCtrl', function ($scope, $rootScope, APIFactory) {
     **        Variables for PAGE VIEW          **
     ********************************************/
     $scope.currentSelectedMovieDetails = [];
-    $scope.detailsMode = false;
 
     $scope.showDetails = function(movie) {
         let movieID = movie.imdbID;
         APIFactory.getMovieDetailsFromId(movieID).then((movieResultsFromDatabase) => {
             $scope.currentSelectedMovieDetails = movieResultsFromDatabase;
-            console.log($scope.currentSelectedMovieDetails);
-            $scope.detailsMode = true;
             $scope.updatecurrentSelectedMovieViewable(movieID)
         });
     }
@@ -23,9 +20,20 @@ app.controller('ListExternalCtrl', function ($scope, $rootScope, APIFactory) {
         let currentMovie = $rootScope.moviesFromDatabase.filter(function( obj ) {
           return obj.imdbID == movieimdbID;
         })[0];
+
+        if (currentMovie.detailsMode) {
+            $scope.removeAllSelectedMovieViewable();
+        } else {
+            $scope.removeAllSelectedMovieViewable();
+            currentMovie.detailsMode = true;   
+        }
         
-        currentMovie.detailsMode = true;
     }
 
+    $scope.removeAllSelectedMovieViewable = function() {
+        $rootScope.moviesFromDatabase.forEach(function(movie) {
+            movie.detailsMode = false;
+        })
+    }
 
 });
