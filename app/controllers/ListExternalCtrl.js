@@ -1,7 +1,7 @@
 "use strict";
 
 
-app.controller('ListExternalCtrl', function ($scope, $rootScope, APIFactory, MovieListFactory) {
+app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIFactory, MovieListFactory) {
 
     /********************************************
     **        Variables for PAGE VIEW          **
@@ -41,11 +41,19 @@ app.controller('ListExternalCtrl', function ($scope, $rootScope, APIFactory, Mov
         MovieListFactory.addToWatchList(moviesFromDatabase).then(function(response){
             console.log("post", response);
 
-            MovieListFactory.myMovieList().then(function(response){
-                console.log(response);
-            })
         })
-    }
+    };
 
+    //display watchlist
+    $scope.showWatchList=function(){  
+        $scope.watchListMovies=[];
+        MovieListFactory.myMovieList().then(function(list){
+            $scope.watchListMovies=list;
+            console.log($scope.watchListMovies);
+        });
+    };
+
+    $scope.showWatchList();
 
 });
+
