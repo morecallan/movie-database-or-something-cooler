@@ -16,7 +16,9 @@
   text-align: center; }
 
 .nav-img {
-  width: 5.3%; }
+  width: 4.5%;
+  margin: 3px 15px;
+  border-radius: 50%; }
 
 .login-reg .pagination {
   margin: 10px auto;
@@ -30,5 +32,4 @@
   background-color: #d50000; }
 
 body {
-  background-color: #263238;
-  font-family: 'Acme', sans-serif; }
+  background-color: #263238; }

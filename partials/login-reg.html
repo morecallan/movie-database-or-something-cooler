@@ -2,10 +2,10 @@
 <div class="main-container z-depth-1 login-reg">
     
   <ul class="pagination">
-    <li class="waves-effect" ng-hide="!modeLogin"><a href="/#/register">Register</a></li>
-    <li class="active" ng-hide="modeLogin"><a href="/#/register">Register</a></li>
-    <li class="waves-effect" ng-hide="modeLogin"><a href="/#/login">Login</a></li>
-    <li class="active" ng-hide="!modeLogin"><a href="/#/login">Login</a></li>
+    <li class="waves-effect" ng-hide="!modeLogin" ng-href="/#/register"><a ng-href="/#/register">Register</a></li>
+    <li class="active" ng-hide="modeLogin" ng-href="/#/register"><a ng-href="/#/register">Register</a></li>
+    <li class="waves-effect" ng-hide="modeLogin" ng-href="/#/login"><a ng-href="/#/login">Login</a></li>
+    <li class="active" ng-hide="!modeLogin" ng-href="/#/login"><a ng-href="/#/login">Login</a></li>
   </ul>
 
   <form ng-hide="modeLogin" id="add-new-user">
