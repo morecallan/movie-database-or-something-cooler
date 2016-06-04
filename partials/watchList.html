@@ -30,14 +30,7 @@
         </div>
 
         <ul class="star-rating">
-          <li ng-repeat="star in stars" class="star" ng-model="movie.rating" ng-class="{filled: star.filled}" ng-mouseover="activeField()" ng-show="activeField">
-            <i class="material-icons" ng-show="!star.filled">star_border</i>
-            <i class="material-icons" ng-show="star.filled">star</i>
-          </li>
-        </ul>
-
-        <ul class="star-rating-interactive">
-          <li ng-repeat="star in stars" class="star" ng-model="movie.rating" ng-class="{filled: star.filled}" ng-click="ratecurrentSelectedMovie(movie, $index)" ng-mouseover="ratingPreviewFill(movie.$index, $index)" ng-show="activeField">
+          <li ng-repeat="star in movie.stars" class="star" ng-class="{filled: star.filled}" ng-click="ratecurrentSelectedMovie(movie, $index)" ng-mouseover="ratingPreviewFill($parent.$index, $index)">
             <i class="material-icons" ng-show="!star.filled">star_border</i>
             <i class="material-icons" ng-show="star.filled">star</i>
           </li>

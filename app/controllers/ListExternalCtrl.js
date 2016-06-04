@@ -8,19 +8,28 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
     ********************************************/
     $scope.currentSelectedMovieDetails = [];
 
-    $scope.stars = [{filled: false}, {filled: false}, {filled: false}, {filled: false}, {filled: false}];
 
     $scope.ratingPreviewFill = function(movie, index) {
-        if (!$scope.stars[index].filled) {
+        if (!$scope.watchListMovies[movie].stars[index].filled) {
             for (var i = 0; i <= index; i++) {
-                $scope.stars[i].filled = true;
+                 $scope.watchListMovies[movie].stars[i].filled = true;
             }
-        } else if ($scope.stars[index].filled) {
-            for (var i = index+1; i < $scope.stars.length; i++) {
-                $scope.stars[i].filled = false;
+        } else if ($scope.watchListMovies[movie].stars[index].filled) {
+            for (var i = index+1; i < $scope.watchListMovies[movie].stars.length; i++) {
+                $scope.watchListMovies[movie].stars[i].filled = false;
             }
-        
         }
+    }
+
+    $scope.parseIntoStars = function(movieList) {
+        movieList.forEach(function(movie) {
+            let starsToFill = parseInt(movie.Rating) - 1;
+            movie.stars = [{filled: true}, {filled: false}, {filled: false}, {filled: false}, {filled: false}];
+            for (var i = 0; i <= starsToFill; i++) {
+                movie.stars[i].filled = true;
+            }
+        })
+        $scope.watchListMovies = movieList;
     }
 
     $scope.ratecurrentSelectedMovie = function(currentMovie, index) {
@@ -61,7 +70,6 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
     //Add Searched Movie to My Watch List
     $scope.addToWatchList=function(moviesFromDatabase){
         MovieListFactory.addToWatchList(moviesFromDatabase).then(function(response){
-            console.log("post", response);
             Materialize.toast('Movie added!', 4000, 'red accent-4');
         })
     };
@@ -71,18 +79,10 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
         $scope.watchListMovies=[];
         MovieListFactory.myMovieList().then(function(list){
             $scope.watchListMovies=list;
-            console.log($scope.watchListMovies);
+            $scope.parseIntoStars($scope.watchListMovies);
         });
     };
-
-
-    //toggle functionality
-    $scope.sort=function() {
-        console.log("hello sorted movies");
-    };
     
-    // $scope.toggleView = false;
-
     $scope.showWatchList();
 
 });
