@@ -105,6 +105,22 @@
   margin: 3px 15px;
   border-radius: 50%; }
 
+.star-rating {
+  margin: 0;
+  padding: 0;
+  display: inline-block; }
+  .star-rating .star {
+    padding: 1px;
+    color: #009688;
+    text-shadow: 0.04em 0.04em rgba(0, 0, 0, 0.7);
+    list-style-type: none;
+    display: inline-block;
+    cursor: pointer; }
+  .star-rating .star i {
+    font-size: 25px; }
+  .star-rating.readonly .star.filled {
+    color: #666; }
+
 .login-reg .pagination {
   margin: 10px auto;
   padding: 0 1px 4px;

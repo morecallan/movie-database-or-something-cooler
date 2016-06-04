@@ -6,10 +6,11 @@ app.controller('RatingCtrl', RatingCtrl)
 
   function RatingCtrl() {
     this.rating1 = 5;
-    this.rating2 = 2;
-    this.isReadonly = true;
-    this.rateFunction = function(rating) {
-      console.log('Rating selected: ' + rating);
+    this.rating2 = 1;
+    this.isReadonly = false;
+    this.rateFunction = function(rating, selectedMovie) {
+      selectedMovie.watched = true;
+      selectedMovie.rating = rating;
     };
   };
 
@@ -19,8 +20,8 @@ app.controller('RatingCtrl', RatingCtrl)
       template:
         '<ul class="star-rating" ng-class="{readonly: readonly}">' +
         '  <li ng-repeat="star in stars" class="star" ng-class="{filled: star.filled}" ng-click="toggle($index)">' +
-        '    <i class="material-icons" ng-show="!filled">star_border</i>' + 
-        '    <i class="material-icons" ng-show="filled">star</i>' + 
+        '    <i class="material-icons" ng-show="!star.filled">star_border</i>' + 
+        '    <i class="material-icons" ng-show="star.filled">star</i>' + 
         '  </li>' +
         '</ul>',
       scope: {
