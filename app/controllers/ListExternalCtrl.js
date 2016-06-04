@@ -1,7 +1,7 @@
 "use strict";
 
 
-app.controller('ListExternalCtrl', function ($scope, $rootScope, APIFactory) {
+app.controller('ListExternalCtrl', function ($scope, $rootScope, APIFactory, MovieListFactory) {
 
     /********************************************
     **        Variables for PAGE VIEW          **
@@ -25,6 +25,18 @@ app.controller('ListExternalCtrl', function ($scope, $rootScope, APIFactory) {
         })[0];
         
         currentMovie.detailsMode = true;
+    }
+
+
+    //Add Searched Movie to My Watch List
+    $scope.addToWatchList=function(moviesFromDatabase){
+        MovieListFactory.addToWatchList(moviesFromDatabase).then(function(response){
+            console.log("post", response);
+
+            MovieListFactory.myMovieList().then(function(response){
+                console.log(response);
+            })
+        })
     }
 
 

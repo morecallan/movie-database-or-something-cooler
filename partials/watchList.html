@@ -1,0 +1,21 @@
+<div class="movie-display">
+  <div ng-repeat="movie in moviesFromDatabase">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{movie.Poster}}">
+        </div>
+        <div class="card-content red accent-4">
+          <p>{{movie.Title}}</p>
+          <p>{{movie.Type}}</p>
+          <p>{{movie.Year}}</p>
+        </div>
+      </div>
+
+
+      <div class="card card-movies-detail" ng-show="movie.detailsMode">
+          <p>{{currentSelectedMovieDetails.Rated}}</p>
+          <p>{{currentSelectedMovieDetails.Runtime}}</p>
+          <p>{{currentSelectedMovieDetails.Plot}}</p>
+      </div>
+    </div>
+  </div>
