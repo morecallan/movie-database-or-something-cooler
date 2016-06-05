@@ -51,7 +51,7 @@ app.run(($location) => {
 
     contactRef.onAuth(authData => {
         if(!authData) {
-            $location.path("/search");
+            $location.path("/login");
         }
     })
 });

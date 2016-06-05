@@ -1,6 +1,12 @@
+<div class="mockmodal row">
+  <input type="text" placeholder="Search my movies..." ng-model="searchText" class="col s6 offset-s2">
+  <button class="waves-effect waves-light btn col s1 offset-s1" ng-click="submitSearchText()"><i class="material-icons">search</i></button>
+</div>
+
+
 
 <!-- Switch -->
-<div class="switch">
+<div class="switch mockmodal">
   <label>
     To Watch
     <input type="checkbox" ng-model="toggleView">
@@ -11,15 +17,24 @@
 
 <div class="movie-display">
   <div ng-repeat="movie in watchListMovies">
-      <div class="card" ng-hide="toggleView ? !movie.watched : movie.watched">
-        <div class="card-image">
-          <img src="{{movie.Poster}}">
+      <div ng-hide="toggleView ? !movie.watched : movie.watched">
+        <div class="card"> 
+          <div class="card-image">
+            <img src="{{movie.Poster}}">
+          </div>
+          <div class="card-content red accent-4">
+            <p>{{movie.Title}}</p>
+            <p>{{movie.Type}}</p>
+            <p>{{movie.Year}}</p>
+          </div>
         </div>
-        <div class="card-content red accent-4">
-          <p>{{movie.Title}}</p>
-          <p>{{movie.Type}}</p>
-          <p>{{movie.Year}}</p>
-        </div>
+
+        <ul class="star-rating">
+          <li ng-repeat="star in movie.stars" class="star" ng-class="{filled: star.filled}" ng-click="ratecurrentSelectedMovie(movie, $index)" ng-mouseover="ratingPreviewFill($parent.$index, $index)">
+            <i class="material-icons" ng-show="!star.filled">star_border</i>
+            <i class="material-icons" ng-show="star.filled">star</i>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

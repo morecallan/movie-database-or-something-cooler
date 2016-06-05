@@ -1,22 +1,25 @@
 @import "modules/colors";
 
 .star-rating {
-  margin: 0;
-  padding: 0;
-  display: inline-block;
+  margin: 20px 10%;
+  background-color: rgba(0, 0, 0, .9);
+  border-radius: 7px;
+  padding: 5px;
+  display: block;
+  width: 80%;
+
   
   .star {
     padding: 1px;
-    color: #ddd;
-    font-size: 20px;
-    text-shadow: .05em .05em #aaa;
+    color: #009688;
+    text-shadow: .04em .04em rgba(0, 0, 0, .7);
     list-style-type: none;
     display: inline-block;
     cursor: pointer;
+  }
 
-    &.filled {
-      color: #fd0;
-    }
+  .star i {
+    font-size: 25px;
   }
 
   &.readonly .star.filled {
