@@ -15,7 +15,7 @@ app.factory("MovieListFactory", function($q, $http,AuthFactory){
                     imdbID:movie.imdbID,
                     Type:movie.Type,
                     Poster:movie.Poster,
-                    Rating: 1,
+                    Rating: 0,
                     uid:user.uid,
                     watched:false
                 }))

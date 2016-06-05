@@ -100,10 +100,23 @@
     padding: 0;
     margin: 0; }
 
-.nav-img {
-  width: 4.5%;
+nav .nav-img {
+  width: 4.6%;
   margin: 3px 15px;
   border-radius: 50%; }
+
+nav #main-nav-logo {
+  top: -10px;
+  padding-bottom: 0; }
+
+nav .subtitle {
+  display: inline-block;
+  position: absolute;
+  top: 40px;
+  left: 120px;
+  margin: 0;
+  font-size: 21px;
+  font-family: 'Amatic SC', cursive; }
 
 .star-rating {
   margin: 20px 10%;

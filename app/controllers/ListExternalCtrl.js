@@ -21,10 +21,18 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
         }
     }
 
+    $scope.clearStars = function(movie) {
+        if (!$scope.watchListMovies[movie].watched) {
+            for (var i = 0; i < 5; i++) {
+                 $scope.watchListMovies[movie].stars[i].filled = false;
+            }
+        }
+    }
+
     $scope.parseIntoStars = function(movieList) {
         movieList.forEach(function(movie) {
             let starsToFill = parseInt(movie.Rating) - 1;
-            movie.stars = [{filled: true}, {filled: false}, {filled: false}, {filled: false}, {filled: false}];
+            movie.stars = [{filled: false}, {filled: false}, {filled: false}, {filled: false}, {filled: false}];
             for (var i = 0; i <= starsToFill; i++) {
                 movie.stars[i].filled = true;
             }
