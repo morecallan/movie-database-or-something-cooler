@@ -14,6 +14,9 @@ app.controller('SearchExternalCtrl', function ($scope, $location, $rootScope, AP
       .then((movieResultsFromDatabase) => {
             $rootScope.moviesFromDatabase = movieResultsFromDatabase.Search;
             $rootScope.moviesFromDatabase.forEach(function(movie) {
+                if (movie.Poster === "N/A") {
+                    movie.Poster = "img/movie-dog.jpg"
+                }
                 movie.detailsMode = false;
             })
             $location.path("/results");

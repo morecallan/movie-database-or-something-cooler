@@ -17,13 +17,13 @@
   z-index: 9999;
   position: absolute;
   top: 64px;
-  max-width: 90%;
+  max-width: 90.1%;
   left: 2.5%;
   right: 0;
   height: 500px;
   overflow-y: hidden;
   overflow-x: auto;
-  background-color: rgba(112, 128, 144, 0.3);
+  background-color: rgba(40, 46, 52, 0.6);
   -webkit-filter: invert(1);
   margin: 30px;
   height: 500px;
