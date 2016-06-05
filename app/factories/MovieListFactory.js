@@ -1,7 +1,7 @@
 "use strict";
 
 
-app.factory("MovieListFactory", function($q, $http,AuthFactory){
+app.factory("MovieListFactory", function($q, $http, firebaseURL, AuthFactory){
 
     //add movie to my watch list
     var addToWatchList=function(movie){
@@ -47,6 +47,19 @@ app.factory("MovieListFactory", function($q, $http,AuthFactory){
         })
     }
 
+    var deleteMovieFromWatchlist = function(movieID){
+        return $q(function(resolve, reject){
+            $http
+            .delete(`${firebaseURL}movies/${movieID}.json`)
+            .success(function(objectFromFirebase){
+                resolve(objectFromFirebase);
+            })
+            .error(function(error){
+                reject(error);
+            });
+        });
+    };
+
     
     //get watch list from firebase
     var myMovieList = function(){
@@ -68,5 +81,5 @@ app.factory("MovieListFactory", function($q, $http,AuthFactory){
         }); 
     }
 
-    return {myMovieList:myMovieList,addToWatchList:addToWatchList,updatedWatchListBasedOnRating:updatedWatchListBasedOnRating};
+    return {myMovieList:myMovieList,addToWatchList:addToWatchList,updatedWatchListBasedOnRating:updatedWatchListBasedOnRating, deleteMovieFromWatchlist:deleteMovieFromWatchlist};
 });

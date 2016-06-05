@@ -64,6 +64,11 @@
     overflow: hidden;
     display: inline-block;
     vertical-align: middle; }
+  .movie-display .delete-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    margin: 0; }
   .movie-display .card-content {
     height: 100px;
     padding: 10px 2px 2px; }

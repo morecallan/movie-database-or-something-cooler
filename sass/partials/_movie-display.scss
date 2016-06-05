@@ -20,6 +20,13 @@
         vertical-align: middle;
     }
 
+    .delete-button {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        margin: 0;
+    }
+
     .card-content {
         height: 100px;
         padding: 10px 2px 2px;

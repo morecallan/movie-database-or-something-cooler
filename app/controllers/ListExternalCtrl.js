@@ -1,12 +1,13 @@
 "use strict";
 
 
-app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIFactory, MovieListFactory) {
+app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIFactory, MovieListFactory, firebaseURL) {
 
     /********************************************
     **        Variables for PAGE VIEW          **
     ********************************************/
     $scope.currentSelectedMovieDetails = [];
+    $scope.unwatchedMoviesList = false;
 
 
     $scope.ratingPreviewFill = function(movie, index) {
@@ -55,6 +56,15 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
         });
     }
 
+
+    $scope.trashHover = function(event) {
+        event.currentTarget.childNodes[1].childNodes[1].classList.remove("ng-hide");
+    }
+
+    $scope.trashHoverOut = function(event) {
+        event.currentTarget.childNodes[1].childNodes[1].classList.add("ng-hide");
+    }
+
     $scope.updatecurrentSelectedMovieViewable = function(movieimdbID) {
         let currentMovie = $rootScope.moviesFromDatabase.filter(function( obj ) {
           return obj.imdbID == movieimdbID;
@@ -82,10 +92,30 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
         })
     };
 
+    $scope.deleteMovieFromWatchlist = function($index){
+        MovieListFactory.deleteMovieFromWatchlist($scope.watchListMovies[$index].id).then(function(){
+            $scope.showWatchList();
+        });
+    }
+
     //display watchlist
     $scope.showWatchList=function(){  
         $scope.watchListMovies=[];
         MovieListFactory.myMovieList().then(function(list){
+            if (list === null) {
+                $scope.unwatchedMoviesList = false;
+            } else {
+                let unwatchedMovies = list.filter(function(movieInList) {
+                    return movieInList.watched === false;
+                })
+                console.log("unwatchedMovies", unwatchedMovies);
+                if (unwatchedMovies.length < 1) {
+                    $scope.unwatchedMoviesList = false;
+                } else {
+                    $scope.unwatchedMoviesList = true;
+                }
+            }
+            console.log($scope.unwatchedMoviesList);
             $scope.watchListMovies=list;
             $scope.parseIntoStars($scope.watchListMovies);
         });
