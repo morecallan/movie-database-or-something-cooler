@@ -46,10 +46,10 @@ app.config(function($routeProvider) {
 });
 
 app.run(($location) => {
-    let contactRef = new Firebase("https://supercoolmoviedb.firebaseio.com/");
-    contactRef.unauth();
+    let watchlistRef = new Firebase("https://supercoolmoviedb.firebaseio.com/");
+    watchlistRef.unauth();
 
-    contactRef.onAuth(authData => {
+    watchlistRef.onAuth(authData => {
         if(!authData) {
             $location.path("/login");
         }

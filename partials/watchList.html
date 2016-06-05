@@ -16,6 +16,22 @@
 </div>
 
 <div class="movie-display">
+
+  <div class="card" id="no-movies" ng-hide="unwatchedMoviesList"> 
+    <div class="oops-circle">
+      <img src="img/movie-dog3.jpg">
+    </div>
+    <div class="card-content-no-movies teal">
+      <p>Oops!</p><p> Looks like you don't have any movies to watch.</p><p>Do you want to add some?</p>
+
+      <a class="btn-floating btn-large red accent-4 switch-to-add" ng-href="#/search">
+        <i class="large material-icons">add_circle</i>
+      </a>
+    </div>
+  </div>
+
+
+
   <div ng-repeat="movie in watchListMovies">
     <div ng-hide="toggleView ? !movie.watched : movie.watched"  ng-mouseenter="trashHover($event)" ng-mouseleave="trashHoverOut($event)">
 
