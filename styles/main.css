@@ -10,7 +10,7 @@ slick {
   text-decoration: none;
   text-align: center;
   position: absolute;
-  top: -61px;
+  top: -59px;
   left: -200px;
   color: white; }
   slick img {
@@ -290,7 +290,7 @@ nav .subtitle {
   padding-bottom: 20px;
   height: 70px;
   width: 15%;
-  overflow-y: auto;
+  overflow: hidden;
   border-radius: 10px; }
   .mockmodalsubtitle p {
     font-family: 'Limelight', cursive;
@@ -365,7 +365,7 @@ nav .subtitle {
   padding: 2px;
   height: 70px;
   width: 50%;
-  overflow-y: auto;
+  overflow: hidden;
   border-radius: 10px; }
   .mockmodal .btn {
     background-color: #009688;

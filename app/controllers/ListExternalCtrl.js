@@ -43,7 +43,7 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
                 })
                 $rootScope.moviesFromDatabase.forEach(function(movie) {
                     if (movie.Poster === "N/A") {
-                        movie.Poster = "img/movie-dog.jpg"
+                        movie.Poster = "img/movie-dog6.jpg"
                     }
                     movie.detailsMode = false;
                 })
