@@ -101,6 +101,13 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
         });
     }
 
+    $scope.watchListShowDetails = function(movie) {
+        let movieID = movie.imdbID;
+        APIFactory.getMovieDetailsFromId(movieID).then((movieResultsFromDatabase) => {
+            $scope.currentSelectedMovieDetails = movieResultsFromDatabase;
+        });
+    }
+
 
     $scope.trashHover = function(event) {
         event.currentTarget.childNodes[1].childNodes[1].classList.remove("ng-hide");

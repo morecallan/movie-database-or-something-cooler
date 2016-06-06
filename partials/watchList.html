@@ -46,13 +46,20 @@
           <i class="large material-icons">delete_forever</i>
         </a>
 
-        <div class="card-image">
-          <img src="{{movie.Poster}}">
+        <div class="card-image card-title">
+          <img class="activator" ng-click="watchListShowDetails(movie)" src="{{movie.Poster}}">
         </div>
         <div class="card-content red accent-4">
           <p>{{movie.Title}}</p>
           <p>{{movie.Type}}</p>
           <p>{{movie.Year}}</p>
+        </div>
+
+        <div class="card-reveal details-watchlist">
+          <span class="card-title">{{movie.Title}}
+            <i>{{currentSelectedMovieDetails.Plot}}</i>
+            <i>{{currentSelectedMovieDetails.Rated}}</i>
+          </span>
         </div>
       </div>
 
