@@ -19,18 +19,47 @@
 
 <body ng-app="MovieDatabaseApp" ng-cloak>
 
-    
-  <div class="preloader-wrapper big active" ng-show="loading">
-    <div class="spinner-layer spinner-blue-only">
-      <div class="circle-clipper left">
-        <div class="circle"></div>
-      </div><div class="gap-patch">
-        <div class="circle"></div>
-      </div><div class="circle-clipper right">
-        <div class="circle"></div>
+  <div id="loaderDiv" class="preloader-wrapper big active" loader>
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-red">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-yellow">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-green">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
       </div>
     </div>
-  </div>
 
   <!-- BEGINNING OF NAV -->
   <div ng-include="'./partials/nav.html'"></div>
@@ -58,6 +87,7 @@
   <!-- APP FIRST -->
   <script type="text/javascript" src="app/app.js"></script>
   <!-- FACTORIES SECOND -->
+  <script type="text/javascript" src="app/factories/InterceptorFactory.js"></script>
   <script type="text/javascript" src="app/factories/AuthFactory.js"></script>
   <script type="text/javascript" src="app/factories/APIFactory.js"></script>
   <script type="text/javascript" src="app/factories/MovieListFactory.js"></script>
