@@ -1,0 +1,38 @@
+@import "../modules/colors";
+
+.mockmodalsubtitle {
+    box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.22), 0 12.5px px 0 rgba(0, 0, 0, 0.21);
+    z-index: 1000;
+
+    position: absolute;
+    top: 1%;
+    left: 2.5%;
+    background-color: rgba(0, 0, 0, .9);
+    color: white;
+    padding-bottom: 20px;
+    height: 70px;
+    width: 15%;
+    overflow-y: auto;
+    border-radius: 10px;
+
+    p {
+        font-family: 'Limelight', cursive;
+        margin-bottom: 15px;
+        margin-top: -20px;
+        padding: 0 3px;
+        display: inline-block;
+        font-size: 20px;
+    }
+
+    i {
+        margin: 0;
+        display: inline-block;
+        font-size: 30px;
+        position: relative;
+        top: 4px;
+    }
+}
+
+.mockmodal:focus {
+    outline: none;
+}
