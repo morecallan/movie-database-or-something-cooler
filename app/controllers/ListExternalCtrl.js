@@ -11,6 +11,7 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
     $scope.noMoviesBack = false;
     $scope.moviePage = 1
     $scope.disableMoreButton = false;
+    $scope.noResultsBack = true;
 
 
     $rootScope.moviesFromDatabase = []
@@ -146,6 +147,7 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
     $scope.showWatchList=function(){  
         $scope.watchListMovies=[];
         MovieListFactory.myMovieList().then(function(list){
+            $scope.noResultsBack = false;
             if (list === null) {
                 $scope.unwatchedMoviesList = false;
             } else {
