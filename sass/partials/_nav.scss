@@ -1,8 +1,30 @@
 @import "../modules/colors";
 
 
-.nav-img {
-    width: 4.5%;
-    margin: 3px 15px;
-    border-radius: 50%;
+nav {
+
+
+    .nav-img {
+        width: 4.6%;
+        margin: 3px 15px;
+        border-radius: 50%;
+    }
+
+    #main-nav-logo {
+        top: -10px;
+        padding-bottom: 0;
+        font-family: 'Limelight', cursive;
+    }
+
+    .subtitle {
+        display: inline-block;
+        position: absolute;
+        top: 38px;
+        left: 125px;
+        margin: 0;
+        font-size: 23px;
+        font-family: 'Amatic SC', cursive;
+    }
+
+
 }

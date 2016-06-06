@@ -1,40 +1,75 @@
 <div class="mockmodal row">
-  <input type="text" placeholder="Search my movies..." ng-model="searchText" class="col s6 offset-s2">
-  <button class="waves-effect waves-light btn col s1 offset-s1" ng-click="submitSearchText()"><i class="material-icons">search</i></button>
+  <input type="text" placeholder="Search my movies..." ng-model="searchTextWatchList" class="col s9 offset-s1">
+  <button class="waves-effect waves-light btn-floating teal btn offset-s1" ng-click="submitSearchText()"><i class="material-icons">search</i></button>
 </div>
 
+<div class="mockmodalsubtitle">
+  <i class="large material-icons">movie_filter</i>
+  <p>My Watchlist</p>
+</div>
 
 
 <!-- Switch -->
 <div class="switch mockmodal">
   <label>
+    <i class="small material-icons">movie</i>
     To Watch
     <input type="checkbox" ng-model="toggleView">
     <span class="lever"></span>
+    <i class="small material-icons">movie_filter</i>
     Watched
   </label>
 </div>
 
 <div class="movie-display">
-  <div ng-repeat="movie in watchListMovies">
-      <div ng-hide="toggleView ? !movie.watched : movie.watched">
-        <div class="card"> 
-          <div class="card-image">
-            <img src="{{movie.Poster}}">
-          </div>
-          <div class="card-content red accent-4">
-            <p>{{movie.Title}}</p>
-            <p>{{movie.Type}}</p>
-            <p>{{movie.Year}}</p>
-          </div>
-        </div>
 
-        <ul class="star-rating">
-          <li ng-repeat="star in movie.stars" class="star" ng-class="{filled: star.filled}" ng-click="ratecurrentSelectedMovie(movie, $index)" ng-mouseover="ratingPreviewFill($parent.$index, $index)">
-            <i class="material-icons" ng-show="!star.filled">star_border</i>
-            <i class="material-icons" ng-show="star.filled">star</i>
-          </li>
-        </ul>
-      </div>
+  <div class="card" id="no-movies" ng-hide="unwatchedMoviesList || toggleView || noResultsBack"> 
+    <div class="oops-circle">
+      <img src="img/movie-dog3.jpg">
+    </div>
+    <div class="card-content-no-movies teal">
+      <p>Oops!</p><p> Looks like you don't have any movies to watch.</p><p>Do you want to add some?</p>
+
+      <a class="btn-floating btn-large red accent-4 switch-to-add" ng-href="#/search">
+        <i class="large material-icons">add_circle</i>
+      </a>
     </div>
   </div>
+
+
+
+  <div ng-repeat="movie in watchListMovies | filter: searchTextWatchList">
+    <div ng-hide="toggleView ? !movie.watched : movie.watched"  ng-mouseenter="trashHover($event)" ng-mouseleave="trashHoverOut($event)">
+
+      <div class="card"  id="watchlist{{$index}}"> 
+        <a class="btn-floating btn-large teal ng-hide delete-button" ng-click="deleteMovieFromWatchlist($index)">
+          <i class="large material-icons">delete_forever</i>
+        </a>
+
+        <div class="card-image card-title">
+          <img class="activator" ng-click="watchListShowDetails(movie)" src="{{movie.Poster}}"  err-src="img/movie-dog5.jpg">
+        </div>
+        <div class="card-content red accent-4">
+          <p>{{movie.Title}}</p>
+          <p>{{movie.Type}}</p>
+          <p>{{movie.Year}}</p>
+        </div>
+
+        <div class="card-reveal details-watchlist">
+          <span class="card-title">{{movie.Title}}
+            <i>{{currentSelectedMovieDetails.Plot}}</i>
+            <i>{{currentSelectedMovieDetails.Rated}}</i>
+          </span>
+        </div>
+      </div>
+
+      <ul class="star-rating" ng-mouseleave="clearStars($index)">
+        <li ng-repeat="star in movie.stars" class="star" ng-class="{filled: star.filled}" ng-click="ratecurrentSelectedMovie(movie, $index)" ng-mouseover="ratingPreviewFill($parent.$index, $index)">
+          <i class="material-icons" ng-show="!star.filled">star_border</i>
+          <i class="material-icons" ng-show="star.filled">star</i>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+

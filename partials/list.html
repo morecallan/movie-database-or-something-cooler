@@ -1,8 +1,35 @@
+<div class="mockmodal row">
+  <form id="databaseSearch" ng-submit="submitSearchText()">
+    <input type="text" placeholder="Search movie database..." ng-model="searchText" autofocus="true" focus-if class="col s9 offset-s1"  ng-keyup="clearNoResultsCard()">
+    <button class="waves-effect waves-light btn-floating teal btn"  ng-click="submitSearchText()"><i class="material-icons">search</i></button>
+  </form>
+</div>
+
+<div class="mockmodalsubtitle">
+  <i class="large material-icons">find_in_page</i>
+  <p>Search OMDb</p>
+</div>
+
+
 <div class="movie-display">
+    <div class="card" id="no-movies" ng-show="noMoviesBack"> 
+      <div class="oops-circle">
+        <img src="img/movie-dog2.jpg">
+      </div>
+      <div class="card-content-no-movies teal">
+        <p>Listen.</p><p>{{searchText}}... really? I searched and there was nothing like that.</p><p>Search better.</p>
+
+        <a class="btn-floating btn-large red accent-4 switch-to-add" ng-href="#/search/#databaseSearch">
+          <i class="large material-icons">search</i>
+        </a>
+      </div>
+    </div>
+
   <div ng-repeat="movie in moviesFromDatabase">
+
       <div class="card">
         <div class="card-image">
-          <img src="{{movie.Poster}}">
+          <img ng-src="{{movie.Poster}}" err-src="img/movie-dog5.jpg">
         </div>
         <div class="card-content red accent-4">
           <p>{{movie.Title}}</p>
@@ -31,5 +58,11 @@
           <p>{{currentSelectedMovieDetails.Runtime}}</p>
           <p>{{currentSelectedMovieDetails.Plot}}</p>
       </div>
-    </div>
+
+      <a class="btn-floating btn-large teal more-button" ng-click="showMoreMovies()" ng-class="{disabled: disableMoreButton}" ng-show="$last">
+        <i class="large material-icons">chevron_right</i>
+      </a>
+    </div>  
+
+    
   </div>

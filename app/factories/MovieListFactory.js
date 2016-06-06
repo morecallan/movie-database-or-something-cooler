@@ -1,36 +1,38 @@
 "use strict";
 
+app.factory("MovieListFactory", function($q, $http, firebaseURL, AuthFactory){
 
-app.factory("MovieListFactory", function($q, $http,AuthFactory){
-
-    //add movie to my watch list
-    var addToWatchList=function(movie){
-        var user=AuthFactory.getUser();
+//Firebase: Adds movie to "To Watch" section of watchlist. (Full movie data passed).
+    let addToWatchList = (movie) => {
+        let user=AuthFactory.getUser();
 
         return $q(function(resolve,reject){
-            $http.post(`https://supercoolmoviedb.firebaseio.com/movies.json`,
+            $http.post(`${firebaseURL}movies.json`,
                 JSON.stringify({
                     Title:movie.Title,
                     Year:movie.Year,
                     imdbID:movie.imdbID,
                     Type:movie.Type,
                     Poster:movie.Poster,
-                    Rating: 1,
+                    Rating: 0,
                     uid:user.uid,
                     watched:false
                 }))
             .success(function(response){
                 resolve(response);
             })
-        })
-    }
+            .error(function(error){
+                reject(error);
+            });
+        });
+    };
 
-     //update movie to my watch list
-    var updatedWatchListBasedOnRating=function(movie){
-        var user=AuthFactory.getUser();
+//Firebase: Updates movie already in watchlist. (Full movie data passed).
+    let updatedWatchListBasedOnRating = (movie) => {
+        let user=AuthFactory.getUser();
 
         return $q(function(resolve,reject){
-            $http.put(`https://supercoolmoviedb.firebaseio.com/movies/${movie.id}.json`,
+            $http.put(`${firebaseURL}movies/${movie.id}.json`,
                 JSON.stringify({
                     Title:movie.Title,
                     Year:movie.Year,
@@ -44,17 +46,34 @@ app.factory("MovieListFactory", function($q, $http,AuthFactory){
             .success(function(response){
                 resolve(response);
             })
-        })
-    }
+            .error(function(error){
+                reject(error);
+            });
+        });
+    };
+
+//Firebase: Removes selected movie from watchlist. (Only movie id key passed).
+    let deleteMovieFromWatchlist = (movieID) =>{
+        return $q(function(resolve, reject){
+            $http
+            .delete(`${firebaseURL}movies/${movieID}.json`)
+            .success(function(objectFromFirebase){
+                resolve(objectFromFirebase);
+            })
+            .error(function(error){
+                reject(error);
+            });
+        });
+    };
 
     
-    //get watch list from firebase
-    var myMovieList = function(){
-        var user=AuthFactory.getUser();
-        var items=[];
+// Firebase: Retrieves full watchlist for logged-in user from database. (Only movie id key passed).
+    let myMovieList = () => {
+        let user = AuthFactory.getUser();
+        let items =[ ];
         
         return $q(function(resolve, reject){
-          $http.get(`https://supercoolmoviedb.firebaseio.com/movies.json?orderBy="uid"&equalTo="${user.uid}"`)
+          $http.get(`${firebaseURL}movies.json?orderBy="uid"&equalTo="${user.uid}"`)
             .success(function(returnObject){ 
                 Object.keys(returnObject).forEach(function(key){
                 returnObject[key].id=key;
@@ -66,7 +85,7 @@ app.factory("MovieListFactory", function($q, $http,AuthFactory){
                 reject(error);
             });  
         }); 
-    }
+    };
 
-    return {myMovieList:myMovieList,addToWatchList:addToWatchList,updatedWatchListBasedOnRating:updatedWatchListBasedOnRating};
+    return {myMovieList:myMovieList, addToWatchList:addToWatchList, updatedWatchListBasedOnRating:updatedWatchListBasedOnRating, deleteMovieFromWatchlist:deleteMovieFromWatchlist};
 });

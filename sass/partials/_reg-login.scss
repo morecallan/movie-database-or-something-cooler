@@ -23,3 +23,16 @@
         background-color: #d50000;
     }
 }
+
+#add-new-user {
+    margin-left: -100px;
+    width: 990px !important;
+    min-width: 990px !important;
+
+    .reg-form {
+        margin-top: 20px;
+        width: 45%;
+        margin-right: 90px;
+        float: right;
+    }
+}

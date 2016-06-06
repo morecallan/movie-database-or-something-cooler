@@ -1,6 +1,6 @@
 "use strict";
 
-var app = angular.module("MovieDatabaseApp", ["ngRoute"])
+var app = angular.module("MovieDatabaseApp", ["ngRoute", "focus-if", "slickCarousel"])
     .constant("firebaseURL", "https://supercoolmoviedb.firebaseio.com/");
 
 let isAuth = (AuthFactory) => new Promise((resolve, reject) => {
@@ -11,24 +11,39 @@ let isAuth = (AuthFactory) => new Promise((resolve, reject) => {
     }
 });
 
+app.directive('errSrc', function() {
+  return {
+    link: function(scope, element, attrs) {
+      element.bind('error', function() {
+        if (attrs.src !== attrs.errSrc) {
+          attrs.$set('src', attrs.errSrc);
+        }
+      });
+    }
+  };
+});
+
 app.config(function($routeProvider) {
     $routeProvider
         .when("/", {
-            templateUrl: "partials/test.html",
-            controller:  "ListEditCtrl",
+            templateUrl: "partials/watchList.html",
+            controller:  "ListExternalCtrl",
+            resolve: {isAuth}
+        })
+        .when("/search", {
+            templateUrl: "partials/list.html",
+            controller:  "ListExternalCtrl",
             resolve: {isAuth}
         })
         .when("/results", {
             templateUrl: "partials/list.html",
             controller:  "ListExternalCtrl",
+            resolve: {isAuth}
         })
-        .when("/list",{
-            templateUrl: "partials/watchList.html",
+        .when("/watchlist",{
+            templateUrl: "partials/watchlist.html",
             controller:  "ListExternalCtrl",
-        })
-        .when("/search", {
-            templateUrl: "partials/search.html",
-            controller:  "SearchExternalCtrl",
+            resolve: {isAuth}
         })
         .when("/login", {
             templateUrl: "partials/login-reg.html",
@@ -46,12 +61,12 @@ app.config(function($routeProvider) {
 });
 
 app.run(($location) => {
-    let contactRef = new Firebase("https://supercoolmoviedb.firebaseio.com/");
-    contactRef.unauth();
+    let watchlistRef = new Firebase("https://supercoolmoviedb.firebaseio.com/");
+    watchlistRef.unauth();
 
-    contactRef.onAuth(authData => {
+    watchlistRef.onAuth(authData => {
         if(!authData) {
             $location.path("/login");
         }
-    })
+    });
 });
