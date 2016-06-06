@@ -157,10 +157,10 @@
       line-height: 100% !important; }
     .movie-display #no-movies p:last-of-type {
       margin: 5px 0 0;
-      font-size: 12px;
+      font-size: 16px;
       font-family: "Shadows Into Light", cursive; }
     .movie-display #no-movies .switch-to-add {
-      margin: 10px; }
+      margin: 3px 10px; }
   .movie-display .delete-button {
     position: absolute;
     top: 5px;
