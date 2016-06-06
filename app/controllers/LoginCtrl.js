@@ -70,4 +70,19 @@ app.controller('LoginCtrl', function ($scope, $location, $rootScope, firebaseURL
         });
     };
 
+
+    $scope.slickConfig = {
+        enabled: true,
+        autoplay: true,
+        draggable: false,  
+        autoplaySpeed: 2500,
+        method: {},
+        event: {
+            beforeChange: function (event, slick, currentSlide, nextSlide) {
+            },
+            afterChange: function (event, slick, currentSlide, nextSlide) {
+            }
+        }
+    };
+
 });
