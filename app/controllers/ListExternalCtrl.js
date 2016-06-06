@@ -72,6 +72,7 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
         MovieListFactory.updatedWatchListBasedOnRating(currentMovie).then(function(){
             $scope.showWatchList();
         });
+        Materialize.toast(`You rated ${currentMovie.Title} ${rating} stars`, 4000, 'teal');
     }
 
     $scope.showDetails = function(movie) {
@@ -114,7 +115,7 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
     //Add Searched Movie to My Watch List
     $scope.addToWatchList=function(moviesFromDatabase){
         MovieListFactory.addToWatchList(moviesFromDatabase).then(function(response){
-            Materialize.toast('Movie added!', 4000, 'teal');
+            Materialize.toast(`${moviesFromDatabase.Title} added to watchlist!`, 4000, 'teal');
         })
     };
 
