@@ -371,12 +371,14 @@ nav .subtitle {
     background-color: #009688;
     margin: 10px 20px; }
   .mockmodal.switch {
-    padding: 34px 8px 0;
+    padding: 34px 2px 0;
     font-size: 13px;
     width: 17%;
     left: 81%; }
     .mockmodal.switch label {
-      font-size: 13px; }
+      font-size: 20px;
+      font-family: "Amatic SC", cursvie;
+      line-height: 103%; }
     .mockmodal.switch i:nth-of-type(1) {
       font-size: 22px;
       display: inline-block;
@@ -388,11 +390,12 @@ nav .subtitle {
       display: inline-block;
       position: absolute;
       top: 15px;
-      left: 150px; }
+      left: 147px; }
     .mockmodal.switch .lever {
-      margin: -10px 12px !important;
+      margin: -14px 16px !important;
       position: relative;
-      top: -10px;
+      top: -14px;
+      padding: 0 1px;
       left: 0;
       right: 0; }
 
