@@ -1,6 +1,6 @@
 "use strict";
 
-var app = angular.module("MovieDatabaseApp", ["ngRoute"])
+var app = angular.module("MovieDatabaseApp", ["ngRoute", "focus-if"])
     .constant("firebaseURL", "https://supercoolmoviedb.firebaseio.com/");
 
 let isAuth = (AuthFactory) => new Promise((resolve, reject) => {

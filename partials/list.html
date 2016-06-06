@@ -1,6 +1,6 @@
 <div class="mockmodal row">
-  <form id="databaseSearch">
-    <input type="text" placeholder="Search database..." ng-model="searchText" autofocus="true" ng-focus="true"class="col s6 offset-s2">
+  <form id="databaseSearch" ng-submit="submitSearchText()">
+    <input type="text" placeholder="Search database..." ng-model="searchText" autofocus="true" focus-if class="col s6 offset-s2">
     <button class="waves-effect waves-light btn col s1 offset-s1"  ng-click="submitSearchText()"><i class="material-icons">search</i></button>
   </form>
 </div>

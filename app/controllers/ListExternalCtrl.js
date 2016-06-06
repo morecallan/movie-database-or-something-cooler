@@ -69,7 +69,9 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
         let rating = index + 1;
         currentMovie.rating = rating;
         currentMovie.watched = true;
-        MovieListFactory.updatedWatchListBasedOnRating(currentMovie);
+        MovieListFactory.updatedWatchListBasedOnRating(currentMovie).then(function(){
+            $scope.showWatchList();
+        });
     }
 
     $scope.showDetails = function(movie) {

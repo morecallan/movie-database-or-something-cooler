@@ -1,8 +1,6 @@
 <div class="mockmodal row">
-  <form>
-    <input type="text" placeholder="Search my movies..." ng-model="searchTextWatchList" class="col s6 offset-s2">
-    <button class="waves-effect waves-light btn col s1 offset-s1" ng-click="submitSearchText()"><i class="material-icons">search</i></button>
-  </form>
+  <input type="text" placeholder="Search my movies..." ng-model="searchTextWatchList" class="col s6 offset-s2">
+  <button class="waves-effect waves-light btn col s1 offset-s1" ng-click="submitSearchText()"><i class="material-icons">search</i></button>
 </div>
 
 
@@ -19,7 +17,7 @@
 
 <div class="movie-display">
 
-  <div class="card" id="no-movies" ng-show="!unwatchedMoviesList ? !toggleView : toggleView"> 
+  <div class="card" id="no-movies" ng-hide="unwatchedMoviesList || toggleView"> 
     <div class="oops-circle">
       <img src="img/movie-dog3.jpg">
     </div>
