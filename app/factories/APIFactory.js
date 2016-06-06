@@ -2,7 +2,7 @@
 
 app.factory("APIFactory", function($q, $http){
 
-    var movieList = function(searchText, page){
+    let movieList = (searchText, page) => {
         return $q(function(resolve, reject){
           $http.get(`http://www.omdbapi.com/?s=${searchText}&y=&plot=short&r=json&page=${page}`)
             .success(function(returnObject){ 
@@ -12,9 +12,9 @@ app.factory("APIFactory", function($q, $http){
                 reject(error);
             });  
         }); 
-    }
+    };
 
-    var getMovieDetailsFromId = function(movieId){
+    let getMovieDetailsFromId = (movieId) => {
         return $q(function(resolve, reject){
           $http.get(`http://www.omdbapi.com/?i=${movieId}&plot=short&r=json`)
             .success(function(returnObject){ 
@@ -24,7 +24,7 @@ app.factory("APIFactory", function($q, $http){
                 reject(error);
             });  
         }); 
-    }
+    };
 
     return {movieList:movieList, getMovieDetailsFromId:getMovieDetailsFromId};
 });

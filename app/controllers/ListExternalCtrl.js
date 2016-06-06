@@ -150,9 +150,11 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
     };
 
     $scope.deleteMovieFromWatchlist = function($index){
+        let toggleValue = $scope.toggleView;
         MovieListFactory.deleteMovieFromWatchlist($scope.watchListMovies[$index].id).then(function(){
             Materialize.toast(`"${$scope.watchListMovies[$index].Title}" removed from watchlist!`, 4000, 'teal');
             $scope.showWatchList();
+            $scope.toggleView = toggleValue;
         });
     }
 
