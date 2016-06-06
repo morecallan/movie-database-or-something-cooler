@@ -82,9 +82,10 @@
       height: auto;
       margin-top: -15px; }
     .movie-display #no-movies .card-content-no-movies {
+      min-height: 185px;
       opacity: 1;
       margin: 0;
-      width: 101%;
+      width: 100%;
       border: none; }
     .movie-display #no-movies .small-inline-icon {
       display: inline;
@@ -99,9 +100,12 @@
       font-weight: bold;
       font-size: 30px; }
     .movie-display #no-movies p:nth-of-type(2) {
-      font-size: 15px; }
+      font-size: 15px;
+      line-height: 100% !important; }
     .movie-display #no-movies p:last-of-type {
-      margin-bottom: 0; }
+      margin: 5px 0 0;
+      font-size: 12px;
+      font-family: "Shadows Into Light", cursive; }
     .movie-display #no-movies .switch-to-add {
       margin: 10px; }
   .movie-display .delete-button {

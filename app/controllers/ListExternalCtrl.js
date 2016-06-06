@@ -8,6 +8,7 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
     ********************************************/
     $scope.currentSelectedMovieDetails = [];
     $scope.unwatchedMoviesList = false;
+    $scope.noMoviesBack = false;
 
 
     $rootScope.moviesFromDatabase = []
@@ -16,14 +17,19 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
     $scope.submitSearchText = function() {
       APIFactory.movieList($scope.searchText)
       .then((movieResultsFromDatabase) => {
-            $rootScope.moviesFromDatabase = movieResultsFromDatabase.Search;
-            $rootScope.moviesFromDatabase.forEach(function(movie) {
+            if (movieResultsFromDatabase.Response === "False" || movieResultsFromDatabase.Response === false) {
+                $scope.noMoviesBack = true;
+            } else {
+                $rootScope.moviesFromDatabase = movieResultsFromDatabase.Search;
+                $rootScope.moviesFromDatabase.forEach(function(movie) {
                 if (movie.Poster === "N/A") {
                     movie.Poster = "img/movie-dog.jpg"
                 }
                 movie.detailsMode = false;
-            })
-            $location.path("/results");
+                })
+                $location.path("/results");
+            }
+            
         });
     }
 
@@ -126,14 +132,12 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
                 let unwatchedMovies = list.filter(function(movieInList) {
                     return movieInList.watched === false;
                 })
-                console.log("unwatchedMovies", unwatchedMovies);
                 if (unwatchedMovies.length < 1) {
                     $scope.unwatchedMoviesList = false;
                 } else {
                     $scope.unwatchedMoviesList = true;
                 }
             }
-            console.log($scope.unwatchedMoviesList);
             $scope.watchListMovies=list;
             $scope.parseIntoStars($scope.watchListMovies);
         });

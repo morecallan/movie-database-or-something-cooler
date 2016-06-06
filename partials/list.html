@@ -1,11 +1,27 @@
 <div class="mockmodal row">
-  <input type="text" placeholder="Search database..." ng-model="searchText" class="col s6 offset-s2">
-  <button class="waves-effect waves-light btn col s1 offset-s1" ng-click="submitSearchText()"><i class="material-icons">search</i></button>
+  <form id="databaseSearch">
+    <input type="text" placeholder="Search database..." ng-model="searchText" autofocus="true" ng-focus="true"class="col s6 offset-s2">
+    <button class="waves-effect waves-light btn col s1 offset-s1"  ng-click="submitSearchText()"><i class="material-icons">search</i></button>
+  </form>
 </div>
 
 
 <div class="movie-display">
+    <div class="card" id="no-movies" ng-show="noMoviesBack"> 
+      <div class="oops-circle">
+        <img src="img/movie-dog2.jpg">
+      </div>
+      <div class="card-content-no-movies teal">
+        <p>Listen.</p><p>{{searchText}}... really? I searched and there was nothing like that.</p><p>Search better.</p>
+
+        <a class="btn-floating btn-large red accent-4 switch-to-add" ng-href="#/search/#databaseSearch">
+          <i class="large material-icons">search</i>
+        </a>
+      </div>
+    </div>
+
   <div ng-repeat="movie in moviesFromDatabase">
+
       <div class="card">
         <div class="card-image">
           <img src="{{movie.Poster}}">

@@ -43,9 +43,10 @@
         }
 
         .card-content-no-movies {
+            min-height: 185px;
             opacity: 1;
             margin: 0;
-            width: 101%;
+            width: 100%;
             border: none;
         }
 
@@ -69,10 +70,13 @@
 
         p:nth-of-type(2) {
             font-size: 15px;
+            line-height: 100% !important;
         }
 
         p:last-of-type {
-            margin-bottom: 0;
+            margin: 5px 0 0;
+            font-size: 12px;
+            font-family: "Shadows Into Light", cursive;
         }
 
         .switch-to-add {
