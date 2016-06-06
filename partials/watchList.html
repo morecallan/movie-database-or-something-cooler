@@ -1,5 +1,5 @@
 <div class="mockmodal row">
-  <input type="text" placeholder="Search my movies..." ng-model="searchText" class="col s6 offset-s2">
+  <input type="text" placeholder="Search my movies..." ng-model="searchTextWatchList" class="col s6 offset-s2">
   <button class="waves-effect waves-light btn col s1 offset-s1" ng-click="submitSearchText()"><i class="material-icons">search</i></button>
 </div>
 
@@ -32,7 +32,7 @@
 
 
 
-  <div ng-repeat="movie in watchListMovies">
+  <div ng-repeat="movie in watchListMovies | filter: searchTextWatchList">
     <div ng-hide="toggleView ? !movie.watched : movie.watched"  ng-mouseenter="trashHover($event)" ng-mouseleave="trashHoverOut($event)">
 
       <div class="card"> 
