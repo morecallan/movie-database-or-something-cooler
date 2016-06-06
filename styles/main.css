@@ -1,3 +1,8 @@
+.subpageTitle {
+  font-family: 'Limelight', cursive;
+  margin: 0;
+  padding: 2px; }
+
 .errormodal {
   box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.22), 0 12.5px px 0 rgba(0, 0, 0, 0.21);
   z-index: 1000;

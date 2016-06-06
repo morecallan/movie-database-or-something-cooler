@@ -17,15 +17,24 @@
 </head>
 
 
-<body ng-app="MovieDatabaseApp">
+<body ng-app="MovieDatabaseApp" ng-cloak>
 
     
-    
+  <div class="preloader-wrapper big active" ng-show="loading">
+    <div class="spinner-layer spinner-blue-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div><div class="gap-patch">
+        <div class="circle"></div>
+      </div><div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
 
   <!-- BEGINNING OF NAV -->
   <div ng-include="'./partials/nav.html'"></div>
   <!-- END OF NAV BAR -->
-
   
 
   <!-- CONTAINER FOR VIEW AND NEW -->
