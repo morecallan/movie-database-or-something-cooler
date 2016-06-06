@@ -9,28 +9,45 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
     $scope.currentSelectedMovieDetails = [];
     $scope.unwatchedMoviesList = false;
     $scope.noMoviesBack = false;
+    $scope.moviePage = 1
+    $scope.disableMoreButton = false;
 
 
     $rootScope.moviesFromDatabase = []
 
 
     $scope.submitSearchText = function() {
-      APIFactory.movieList($scope.searchText)
-      .then((movieResultsFromDatabase) => {
-            if (movieResultsFromDatabase.Response === "False" || movieResultsFromDatabase.Response === false) {
+        $rootScope.moviesFromDatabase = [];
+        $scope.moviePage = 1;
+        $scope.makeRequestToDatabase();
+    }
+
+    $scope.makeRequestToDatabase = function() {
+        APIFactory.movieList($scope.searchText, $scope.moviePage)
+        .then((movieResultsFromDatabase) => {
+            if ((movieResultsFromDatabase.Response === "False" || movieResultsFromDatabase.Response === false) && $rootScope.moviesFromDatabase.length < 1) {
                 $scope.noMoviesBack = true;
+            } else if ((movieResultsFromDatabase.Response === "False" || movieResultsFromDatabase.Response === false) && $rootScope.moviesFromDatabase.length >= 1) {
+                $scope.disableMoreButton = true;
+                Materialize.toast(`Could not find any more movies with "${$scope.searchText}" in the title.`, 4000, 'teal');
             } else {
-                $rootScope.moviesFromDatabase = movieResultsFromDatabase.Search;
-                $rootScope.moviesFromDatabase.forEach(function(movie) {
-                if (movie.Poster === "N/A") {
-                    movie.Poster = "img/movie-dog.jpg"
-                }
-                movie.detailsMode = false;
+                $scope.disableMoreButton = false;
+                movieResultsFromDatabase.Search.forEach(function(movie) {
+                    $rootScope.moviesFromDatabase.push(movie)
                 })
-                $location.path("/results");
-            }
-            
+                $rootScope.moviesFromDatabase.forEach(function(movie) {
+                    if (movie.Poster === "N/A") {
+                        movie.Poster = "img/movie-dog.jpg"
+                    }
+                    movie.detailsMode = false;
+                })
+            }   
         });
+    }
+
+    $scope.showMoreMovies = function() {
+        $scope.moviePage ++;
+        $scope.makeRequestToDatabase();
     }
 
 

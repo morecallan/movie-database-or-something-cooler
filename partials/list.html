@@ -53,5 +53,11 @@
           <p>{{currentSelectedMovieDetails.Runtime}}</p>
           <p>{{currentSelectedMovieDetails.Plot}}</p>
       </div>
-    </div>
+
+      <a class="btn-floating btn-large teal more-button" ng-click="showMoreMovies()" ng-class="{disabled: disableMoreButton}" ng-show="$last">
+        <i class="large material-icons">chevron_right</i>
+      </a>
+    </div>  
+
+    
   </div>

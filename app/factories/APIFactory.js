@@ -1,8 +1,10 @@
+"use strict";
+
 app.factory("APIFactory", function($q, $http){
 
-    var movieList = function(searchText){
+    var movieList = function(searchText, page){
         return $q(function(resolve, reject){
-          $http.get(`http://www.omdbapi.com/?s=${searchText}&y=&plot=short&r=json`)
+          $http.get(`http://www.omdbapi.com/?s=${searchText}&y=&plot=short&r=json&page=${page}`)
             .success(function(returnObject){ 
                 resolve(returnObject);
             })
