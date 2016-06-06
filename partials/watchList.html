@@ -17,7 +17,7 @@
 
 <div class="movie-display">
 
-  <div class="card" id="no-movies" ng-hide="unwatchedMoviesList"> 
+  <div class="card" id="no-movies" ng-show="!unwatchedMoviesList ? !toggleView : toggleView"> 
     <div class="oops-circle">
       <img src="img/movie-dog3.jpg">
     </div>
