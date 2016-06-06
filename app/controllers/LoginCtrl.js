@@ -59,7 +59,7 @@ app.controller('LoginCtrl', function ($scope, $location, $rootScope, firebaseURL
         .authenticate($rootScope.account)
         .then((userCreds) => {
             $scope.$apply(function() {
-                $location.path("/search");
+                $location.path("/watchlist");
                 $rootScope.isActive = true;
             })
         })

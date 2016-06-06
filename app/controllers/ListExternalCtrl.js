@@ -10,6 +10,24 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
     $scope.unwatchedMoviesList = false;
 
 
+    $rootScope.moviesFromDatabase = []
+
+
+    $scope.submitSearchText = function() {
+      APIFactory.movieList($scope.searchText)
+      .then((movieResultsFromDatabase) => {
+            $rootScope.moviesFromDatabase = movieResultsFromDatabase.Search;
+            $rootScope.moviesFromDatabase.forEach(function(movie) {
+                if (movie.Poster === "N/A") {
+                    movie.Poster = "img/movie-dog.jpg"
+                }
+                movie.detailsMode = false;
+            })
+            $location.path("/results");
+        });
+    }
+
+
     $scope.ratingPreviewFill = function(movie, index) {
         if (!$scope.watchListMovies[movie].stars[index].filled) {
             for (var i = 0; i <= index; i++) {

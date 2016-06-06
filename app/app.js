@@ -14,21 +14,24 @@ let isAuth = (AuthFactory) => new Promise((resolve, reject) => {
 app.config(function($routeProvider) {
     $routeProvider
         .when("/", {
-            templateUrl: "partials/test.html",
-            controller:  "ListEditCtrl",
+            templateUrl: "partials/watchList.html",
+            controller:  "ListExternalCtrl",
+            resolve: {isAuth}
+        })
+        .when("/search", {
+            templateUrl: "partials/list.html",
+            controller:  "ListExternalCtrl",
             resolve: {isAuth}
         })
         .when("/results", {
             templateUrl: "partials/list.html",
             controller:  "ListExternalCtrl",
+            resolve: {isAuth}
         })
-        .when("/list",{
-            templateUrl: "partials/watchList.html",
+        .when("/watchlist",{
+            templateUrl: "partials/watchlist.html",
             controller:  "ListExternalCtrl",
-        })
-        .when("/search", {
-            templateUrl: "partials/search.html",
-            controller:  "SearchExternalCtrl",
+            resolve: {isAuth}
         })
         .when("/login", {
             templateUrl: "partials/login-reg.html",
