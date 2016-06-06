@@ -13,11 +13,10 @@ app.controller('LoginCtrl', function ($scope, $location, $rootScope, firebaseURL
     $scope.userUploadSuccess = false;
 
 
-
-
     $scope.closeModal = () => {
         $scope.userError = false;
-    }
+    };
+
 
     if($location.path() === "/login"){
         $rootScope.modeLogin = true;
@@ -26,7 +25,6 @@ app.controller('LoginCtrl', function ($scope, $location, $rootScope, firebaseURL
     if($location.path() === "/register"){
         $rootScope.modeLogin = false;
     }
-
 
 
     $rootScope.account = {
@@ -38,6 +36,7 @@ app.controller('LoginCtrl', function ($scope, $location, $rootScope, firebaseURL
         ref.unauth();
         $rootScope.isActive = false;
     }
+
 
     $scope.register = (authFactory) => {
         ref.createUser({
@@ -61,7 +60,7 @@ app.controller('LoginCtrl', function ($scope, $location, $rootScope, firebaseURL
             $scope.$apply(function() {
                 $location.path("/watchlist");
                 $rootScope.isActive = true;
-            })
+            });
         })
         .catch((error) => {
                 $scope.errorMessage = error.message;
