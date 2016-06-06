@@ -14,7 +14,11 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
     $scope.noResultsBack = true;
 
 
-    $rootScope.moviesFromDatabase = []
+    $rootScope.moviesFromDatabase = [];
+
+    $scope.clearNoResultsCard = function() {
+        $scope.noMoviesBack = false;
+    }
 
 
     $scope.submitSearchText = function() {
@@ -32,6 +36,7 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
                 $scope.disableMoreButton = true;
                 Materialize.toast(`Could not find any more movies with "${$scope.searchText}" in the title.`, 4000, 'teal');
             } else {
+                $scope.noMoviesBack = false;
                 $scope.disableMoreButton = false;
                 movieResultsFromDatabase.Search.forEach(function(movie) {
                     $rootScope.moviesFromDatabase.push(movie)
