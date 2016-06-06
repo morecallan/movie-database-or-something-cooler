@@ -13,7 +13,7 @@
         <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">email</i>
-              <input type="email" autocomplete="nope" ng-model="account.email">
+              <input type="email" autocomplete="nope" focus-if ng-model="account.email">
               <label>Email</label>
             </div>
         </div>
@@ -35,7 +35,7 @@
       <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">email</i>
-              <input type="email" autofocus="true" autocomplete="nope" ng-model="account.email">
+              <input type="email" autofocus="true" focus-if autocomplete="nope" ng-model="account.email">
               <label>Email</label>
             </div>
         </div>
@@ -58,9 +58,9 @@
 <!-- Modal Structure -->
 
 
-<div class="mockmodal" ng-keypress="closeModal()" ng-click="closeModal()" id="errorMessageBox" autofocus="true" ng-show="userError">
-  <a  class="waves-effect waves-green btn-floating"><i class="material-icons left">close</i></a>
-
+<div class="errormodal" ng-keypress="closeModal()" ng-click="closeModal()" id="errorMessageBox" autofocus="true" ng-show="userError">
+  <a class="waves-effect waves-green btn-floating teal"><i class="material-icons left">close</i></a>
+  <div class="errormodal-photo-container"><img class="errormodal-photo" src="img/movie-dog4.jpg"></div>
   <div class="mockmodal-content">
     <h4>Oops! Houston we have a problem.</h4>
     <p>{{errorMessage}}</p>

@@ -1,0 +1,62 @@
+@import "../modules/colors";
+
+.errormodal {
+    box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.22), 0 12.5px px 0 rgba(0, 0, 0, 0.21);
+    z-index: 1000;
+
+    position: absolute;
+    top: 20%;
+    left: 27%;
+    background-color: rgba(0, 0, 0, .9);
+    color: white;
+    padding: 2px;
+    height: 200px;
+    width: 50%;
+    overflow-y: auto;
+    border-radius: 10px;
+
+    .btn-floating {
+        margin: 10px 20px;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+    
+    .mockmodal-content {
+        display: inline-block;
+        margin: 6.7%;
+        margin-left: -15px;
+        width: 60%;
+    }
+
+    h4:nth-of-type(1){
+        font-family: 'Amatic SC', cursive; 
+        font-size: 35px;
+    }
+
+    .errormodal-photo-container {
+        max-width: 125px;
+        min-width: 125px;
+        margin: 9% 0 10% 20px;
+        float: left;
+        overflow: hidden;
+        border-radius: 2px;
+        height: 90px;
+
+    }
+
+    .errormodal-photo {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+        max-width: 150px;
+        min-width: 150px;
+    }
+}
+
+.mockmodal:focus {
+ outline: none;
+}
