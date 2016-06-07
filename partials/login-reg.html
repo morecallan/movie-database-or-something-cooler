@@ -67,7 +67,7 @@
 <!-- Modal Structure -->
 
 
-<div class="errormodal" ng-keypress="closeModal()" ng-click="closeModal()" id="errorMessageBox" autofocus="true" ng-show="userError">
+<div class="errormodal" ng-keypress="closeModal()" ng-click="closeModal()" id="errorMessageBox" autofocus="true" ng-show="userError" ng-if="userError" ng-focus="userError">
   <a class="waves-effect waves-green btn-floating teal"><i class="material-icons left">close</i></a>
   <div class="errormodal-photo-container"><img class="errormodal-photo" src="img/movie-dog4.jpg"></div>
   <div class="mockmodal-content">

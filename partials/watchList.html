@@ -21,7 +21,7 @@
   </label>
 </div>
 
-<div class="movie-display">
+<div class="movie-display snap-card">
 
   <div class="card" id="no-movies" ng-hide="unwatchedMoviesList || toggleView || noResultsBack"> 
     <div class="oops-circle">
@@ -38,11 +38,11 @@
 
 
 
-  <div ng-repeat="movie in watchListMovies | filter: searchTextWatchList">
+  <div ng-repeat="movie in watchListMovies | filter: searchTextWatchList" my-repeat-directive>
     <div ng-hide="toggleView ? !movie.watched : movie.watched"  ng-mouseenter="trashHover($event)" ng-mouseleave="trashHoverOut($event)">
 
-      <div class="card"  id="watchlist{{$index}}"> 
-        <a class="btn-floating btn-large teal ng-hide delete-button" ng-click="deleteMovieFromWatchlist($index)">
+      <div class="card snap-card"  id="watchlist{{$index}}"> 
+        <a class="btn-floating btn-large teal ng-hide delete-button" ng-click="deleteMovieFromWatchlist($index, $event)">
           <i class="large material-icons">delete_forever</i>
         </a>
 

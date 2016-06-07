@@ -1,7 +1,7 @@
 "use strict";
 
 
-app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIFactory, MovieListFactory, firebaseURL) {
+app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, $timeout, $anchorScroll, APIFactory, MovieListFactory, firebaseURL) {
 
 /********************************************
 **        Variables for PAGE VIEW          **
@@ -14,6 +14,8 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
     $scope.currentSelectedMovieDetails = [];    //USE: Details for one specific movie from OMDb.
     $scope.unwatchedMoviesList = false;         //USE: If user has no 'watched: false' in watchlist database.
     $scope.noResultsBack = true;                //USE: If a call has yet to be made to database.
+    $rootScope.lastLoaded = false;              //USE: Make sure NG Repeat has fully populated.
+    $scope.sLeft = 0;                           //USE: To track scrolling pixels.
 
 
 
@@ -134,9 +136,11 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
 
 
 //Watchlist: Display watchlist then display star value based on rating in database.
-    $scope.showWatchList = () => {  
+    $scope.showWatchList = () => {
+        $rootScope.lastLoaded = false;  
         $scope.watchListMovies=[];
         MovieListFactory.myMovieList().then((list) => {
+            $rootScope.lastLoaded = false;  
             $scope.noResultsBack = false;
             if (list === null) {
                 $scope.unwatchedMoviesList = false;
@@ -173,12 +177,15 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
 
 
     //Watchlist: Delete Movie from Database.
-    $scope.deleteMovieFromWatchlist = ($index) => {
-        let toggleValue = $scope.toggleView;
+    $scope.deleteMovieFromWatchlist = ($index, $event) => {
+        let divWithScrollProp = document.getElementsByClassName("snap-card")[0];
+        $scope.sLeft = divWithScrollProp.scrollLeft;
         MovieListFactory.deleteMovieFromWatchlist($scope.watchListMovies[$index].id).then(() => {
             Materialize.toast(`"${$scope.watchListMovies[$index].Title}" removed from watchlist!`, 4000, 'teal');
             $scope.showWatchList();
-            $scope.toggleView = toggleValue;
+            $scope.$watch(function(){return $rootScope.lastLoaded === true;}, function(){
+                divWithScrollProp.scrollLeft =  $scope.sLeft; 
+            });
         });
     };
 
@@ -245,3 +252,15 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, APIF
     $scope.showWatchList();
 });
 
+
+
+/********************************************
+**       WATCH FOR NG REPEAT COMPLETE      **
+********************************************/
+app.directive('myRepeatDirective', function($rootScope) {
+  return function(scope, element, attrs) {
+    if (scope.$last){
+      $rootScope.lastLoaded = true;
+    }
+  };
+})

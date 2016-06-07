@@ -43,7 +43,8 @@ app.config(function($routeProvider) {
         .when("/watchlist",{
             templateUrl: "partials/watchlist.html",
             controller:  "ListExternalCtrl",
-            resolve: {isAuth}
+            resolve: {isAuth},
+            reloadOnSearch: false
         })
         .when("/login", {
             templateUrl: "partials/login-reg.html",
