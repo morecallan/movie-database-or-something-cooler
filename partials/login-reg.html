@@ -33,7 +33,10 @@
               <label>Password</label>
             </div>
         </div>
-        <button class="btn" ng-click="register()"><i class="material-icons left">person_add</i>Register</button>
+        <div class="row">
+          <button id="google-button" class="btn g-signin2" data-width="100" data-onsuccess="onSignIn"></button>
+          <button class="btn" ng-click="register()"><i class="material-icons left">person_add</i>Register</button>
+        </div>
       </div>
     </div>
     </form>
@@ -76,3 +79,7 @@
   </div>
     
 </div>
+
+
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
