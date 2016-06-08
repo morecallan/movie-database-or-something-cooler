@@ -158,8 +158,7 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, $tim
             }
             $scope.watchListMovies=list;
             moviediv.classList.remove("animated", "fadeOut");
-            moviediv.classList.add("animated", "slideInUp");
-
+            moviediv.classList.add("animated", "fadeIn");
             $scope.parseIntoStars($scope.watchListMovies);
         });
     };
@@ -242,6 +241,7 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, $tim
         let rating = index + 1;
         currentMovie.rating = rating;
         currentMovie.watched = true;
+        moviediv.classList.add("animated", "fadeIn");
         MovieListFactory.updatedWatchListBasedOnRating(currentMovie).then(() => {
             $scope.showWatchList();
         });
@@ -270,4 +270,4 @@ app.directive('myRepeatDirective', function($rootScope) {
       $rootScope.lastLoaded = true;
     }
   };
-})
+});
