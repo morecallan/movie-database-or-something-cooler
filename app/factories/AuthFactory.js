@@ -32,6 +32,22 @@ app.factory("AuthFactory", function(firebaseURL, $q, $http, $rootScope) {
     });
   };
 
+//Firebase: GOOGLE - Use input credentials to authenticate user.
+  let authenticateGoogle = () => {
+    return new Promise((resolve, reject) => {
+      ref.authWithOAuthPopup("google", (error, authData) => {
+        if (error) {
+          reject(error);
+        } else {
+          currentUserData = authData;
+          resolve(authData);
+        }
+      });
+    });
+  };
+
+
+
 //Firebase: Store each Firebase user's id in the `users` collection
   let storeUser = (authData) => {
     let stringifiedUser = JSON.stringify({ uid: authData.uid });
@@ -45,5 +61,5 @@ app.factory("AuthFactory", function(firebaseURL, $q, $http, $rootScope) {
       });
   };
 
-  return {isAuthenticated:isAuthenticated, getUser:getUser, authenticate:authenticate, storeUser:storeUser};
+  return {isAuthenticated:isAuthenticated, getUser:getUser, authenticate:authenticate, storeUser:storeUser, authenticateGoogle: authenticateGoogle};
 });

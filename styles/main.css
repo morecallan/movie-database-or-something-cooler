@@ -83,6 +83,34 @@ slick:hover {
 .mockmodal:focus {
   outline: none; }
 
+#google-button {
+  display: inline-block;
+  margin: 0 40px 0 0;
+  padding: 0;
+  color: slategray;
+  width: 150px;
+  border: none;
+  border-radius: 2px;
+  display: inline-block;
+  height: 35px;
+  outline: 0;
+  text-transform: uppercase;
+  vertical-align: middle;
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.9), 0 4px 15px 0 rgba(0, 0, 0, 0.89);
+  -webkit-tap-highlight-color: transparent; }
+  #google-button span.icon {
+    background: url("/img/g-logo.png") transparent 0px 50% no-repeat;
+    background-size: 25px 25px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 50px;
+    height: 25px;
+    margin-bottom: 2px;
+    margin-left: -10px; }
+
+#customBtn:hover {
+  cursor: pointer; }
+
 #loaderDiv {
   position: fixed;
   top: 48%;

@@ -33,11 +33,13 @@
               <label>Password</label>
             </div>
         </div>
-        <button class="btn" ng-click="register()"><i class="material-icons left">person_add</i>Register</button>
+        <div class="row">
+          <button id="google-button" class="btn white" ng-click="loginGoggle()"><span class="icon"></span><span>Register</span></button>
+          <button class="btn" ng-click="register()"><i class="material-icons left">person_add</i>Register</button>
+        </div>
       </div>
     </div>
     </form>
-
 
     <form id="login" ng-hide="!modeLogin">
         <div class="row">
@@ -55,8 +57,10 @@
                 <label>Password</label>
               </div>
           </div>
-
-          <button class="btn" ng-click="login()"><i class="material-icons left">person_add</i>Login</button>
+          <div class="row">
+            <button id="google-button" class="btn white" ng-click="loginGoggle()"><span class="icon"></span><span>Login</span></button>
+            <button class="btn" ng-click="login()"><i class="material-icons left">person_add</i>Login</button>
+          </div>
       </form>
       </div>
 </div>
@@ -67,7 +71,7 @@
 <!-- Modal Structure -->
 
 
-<div class="errormodal" ng-keypress="closeModal()" ng-click="closeModal()" id="errorMessageBox" autofocus="true" ng-show="userError">
+<div class="errormodal" ng-keypress="closeModal()" ng-click="closeModal()" id="errorMessageBox" autofocus="true" ng-show="userError" ng-if="userError" ng-focus="userError">
   <a class="waves-effect waves-green btn-floating teal"><i class="material-icons left">close</i></a>
   <div class="errormodal-photo-container"><img class="errormodal-photo" src="img/movie-dog4.jpg"></div>
   <div class="mockmodal-content">
@@ -76,3 +80,7 @@
   </div>
     
 </div>
+
+
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>

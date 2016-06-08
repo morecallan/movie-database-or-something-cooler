@@ -1,6 +1,11 @@
+@import "partials/mock-materialize";
+
+
+
 @import "partials/body";
 @import "partials/carousel";
 @import "partials/error-msg";
+@import "partials/google-btn";
 @import "partials/loader";
 @import "partials/main-container";
 @import "partials/movie-details";
@@ -10,6 +15,7 @@
 @import "partials/page-subtitle";
 @import "partials/rating";
 @import "partials/reg-login";
+@import "partials/scrollbar-override";
 @import "partials/search";
 @import "partials/splash";
 

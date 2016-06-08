@@ -69,6 +69,21 @@ app.controller('LoginCtrl', function ($scope, $location, $rootScope, firebaseURL
         });
     };
 
+    $scope.loginGoggle = () => {
+        AuthFactory
+        .authenticateGoogle()
+        .then((userCreds) => {
+            $scope.$apply(function() {
+                $location.path("/watchlist");
+                $rootScope.isActive = true;
+            });
+        })
+        .catch((error) => {
+                $scope.errorMessage = error.message;
+                $scope.userError = true;
+                $scope.$apply();
+        });
+    };
 
     $scope.slickConfig = {
         enabled: true,
