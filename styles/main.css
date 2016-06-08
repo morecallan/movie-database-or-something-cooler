@@ -173,7 +173,7 @@ slick:hover {
   font-family: "Amatic SC", cursive; }
   .details-watchlist.card .card-title {
     font-size: 30px  !important; }
-  .details-watchlist i {
+  .details-watchlist p {
     font-family: "Roboto";
     font-size: 12px !important;
     line-height: -2px !important;
@@ -181,6 +181,13 @@ slick:hover {
     padding: 0;
     margin: 10px;
     font-style: normal !important; }
+  .details-watchlist i {
+    display: inline-block;
+    position: relative;
+    top: 1.5px;
+    margin: 0;
+    padding: 0 2px;
+    font-size: 15px; }
 
 .movie-display {
   display: flex;

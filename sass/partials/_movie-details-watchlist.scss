@@ -10,7 +10,7 @@
         font-size: 30px  !important;
     }
 
-    i {
+    p {
         font-family: "Roboto";
         font-size: 12px !important;
         line-height: -2px !important;
@@ -19,4 +19,15 @@
         margin: 10px;
         font-style: normal !important;
     }
+
+    i {
+        display: inline-block;
+        position: relative;
+        top: 1.5px;
+        margin: 0;
+        padding: 0 2px;
+        font-size: 15px;
+    }
+
+
 }

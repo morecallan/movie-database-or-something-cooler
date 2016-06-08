@@ -17,6 +17,8 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, $tim
     $rootScope.lastLoaded = false;              //USE: Make sure NG Repeat has fully populated.
     $scope.sLeft = 0;                           //USE: To track scrolling pixels.
 
+       
+    let moviediv = document.getElementById("movieList");
 
 
 
@@ -155,6 +157,8 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, $tim
                 }
             }
             $scope.watchListMovies=list;
+            moviediv.classList.remove("animated", "fadeOut");
+            moviediv.classList.add("animated", "fadeIn");
             $scope.parseIntoStars($scope.watchListMovies);
         });
     };
@@ -178,6 +182,8 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, $tim
 
     //Watchlist: Delete Movie from Database.
     $scope.deleteMovieFromWatchlist = ($index, $event) => {
+        moviediv.classList.add("animated", "fadeOut");
+
         let divWithScrollProp = document.getElementsByClassName("snap-card")[0];
         $scope.sLeft = divWithScrollProp.scrollLeft;
         MovieListFactory.deleteMovieFromWatchlist($scope.watchListMovies[$index].id).then(() => {
@@ -235,6 +241,7 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, $tim
         let rating = index + 1;
         currentMovie.rating = rating;
         currentMovie.watched = true;
+        moviediv.classList.add("animated", "fadeIn");
         MovieListFactory.updatedWatchListBasedOnRating(currentMovie).then(() => {
             $scope.showWatchList();
         });
@@ -263,4 +270,4 @@ app.directive('myRepeatDirective', function($rootScope) {
       $rootScope.lastLoaded = true;
     }
   };
-})
+});
