@@ -18,6 +18,7 @@ app.factory("APIFactory", function($q, $http){
         return $q(function(resolve, reject){
           $http.get(`http://www.omdbapi.com/?i=${movieId}&plot=short&r=json`)
             .success(function(returnObject){ 
+                console.log("returnObject", returnObject);
                 resolve(returnObject);
             })
             .error(function(error){
