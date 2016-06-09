@@ -16,7 +16,7 @@ app.factory("APIFactory", function($q, $http){
 
     let getMovieDetailsFromId = (movieId) => {
         return $q(function(resolve, reject){
-          $http.get(`http://www.omdbapi.com/?i=${movieId + '*'}*&plot=short&r=json`)
+          $http.get(`http://www.omdbapi.com/?i=${movieId}&plot=short&r=json`)
             .success(function(returnObject){ 
                 resolve(returnObject);
             })
