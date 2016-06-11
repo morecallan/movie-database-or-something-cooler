@@ -1,5 +1,5 @@
 {
-  "predef": [ "document", "console", "angular", "Firebase", "$http", "$rootScope" ],
+  "predef": [ "document", "console", "angular", "Firebase", "$http", "$rootScope", "Materialize" ],
   "esversion": 6,
   "globalstrict": true,
   "curly": true,

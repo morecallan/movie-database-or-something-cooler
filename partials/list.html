@@ -1,5 +1,5 @@
 <div class="mockmodal row">
-  <form id="databaseSearch" ng-submit="submitSearchText()">
+  <form id="databaseSearch">
     <input type="text" placeholder="Search movie database..." ng-model="searchText" autofocus="true" focus-if class="col s9 offset-s1"  ng-keyup="clearNoResultsCard()">
     <button class="waves-effect waves-light btn-floating teal btn"  ng-click="submitSearchText()"><i class="material-icons">search</i></button>
   </form>
@@ -25,7 +25,7 @@
       </div>
     </div>
 
-  <div ng-repeat="movie in moviesFromDatabase track by $index">
+  <div ng-repeat="movie in moviesFromDatabase">
 
       <div class="card">
         <div class="card-image">

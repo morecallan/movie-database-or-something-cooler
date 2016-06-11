@@ -1,3 +1,7 @@
+.no-animate {
+  -webkit-transition: none !important;
+  transition: none !important; }
+
 slick {
   width: 60%;
   max-width: 425px;
@@ -350,7 +354,9 @@ nav .subtitle {
   border-radius: 7px;
   padding: 5px;
   display: block;
-  width: 80%; }
+  width: 80%;
+  max-width: 80%;
+  overflow: hidden; }
   .star-rating .star {
     padding: 1px;
     color: #009688;

@@ -1,6 +1,6 @@
 "use strict";
 
-var app = angular.module("MovieDatabaseApp", ["ngRoute", "focus-if", "slickCarousel"])
+var app = angular.module("MovieDatabaseApp", ["ngRoute", "focus-if", "slickCarousel", "ngAnimate"])
     .constant("firebaseURL", "https://supercoolmoviedb.firebaseio.com/");
 
 let isAuth = (AuthFactory) => new Promise((resolve, reject) => {
@@ -72,6 +72,11 @@ app.run(($location) => {
     });
 });
 
+app.config(function($animateProvider) {
+  $animateProvider.classNameFilter(/angular-animate/);
+});
+
+
 
 function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
@@ -99,3 +104,25 @@ function renderButton() {
     'onfailure': onFailure
   });
 }
+
+
+app.animation('.slide', [function() {
+  return {
+    // make note that other events (like addClass/removeClass)
+    // have different function input parameters
+    enter: function(element, doneFn) {
+      jQuery(element).fadeIn(1000, doneFn);
+
+      // remember to call doneFn so that angular
+      // knows that the animation has concluded
+    },
+
+    move: function(element, doneFn) {
+      jQuery(element).fadeIn(1000, doneFn);
+    },
+
+    leave: function(element, doneFn) {
+      jQuery(element).fadeOut(1000, doneFn);
+    }
+  }
+}]);

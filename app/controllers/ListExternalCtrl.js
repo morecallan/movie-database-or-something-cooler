@@ -50,6 +50,7 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, $tim
             } else {
                 $scope.noMoviesBack = false;
                 $scope.disableMoreButton = false;
+                console.log("movieResultsFromDatabase", movieResultsFromDatabase);
                 movieResultsFromDatabase.Search.forEach((movie) => {
                     $rootScope.moviesFromDatabase.push(movie);
                 });
@@ -157,8 +158,6 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, $tim
                 }
             }
             $scope.watchListMovies=list;
-            moviediv.classList.remove("animated", "fadeOut");
-            moviediv.classList.add("animated", "fadeIn");
             $scope.parseIntoStars($scope.watchListMovies);
         });
     };
@@ -184,6 +183,20 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, $tim
     $scope.deleteMovieFromWatchlist = ($index, $event) => {
         moviediv.classList.add("animated", "fadeOut");
 
+        let divWithScrollProp = document.getElementsByClassName("snap-card")[0];
+        $scope.sLeft = divWithScrollProp.scrollLeft;
+        MovieListFactory.deleteMovieFromWatchlist($scope.watchListMovies[$index].id).then(() => {
+            Materialize.toast(`"${$scope.watchListMovies[$index].Title}" removed from watchlist!`, 4000, 'teal');
+            $scope.showWatchList();
+            $scope.$watch(function(){return $rootScope.lastLoaded === true;}, function(){
+                divWithScrollProp.scrollLeft =  $scope.sLeft; 
+            });
+        });
+    };
+
+    $scope.deleteMovieFromArray = ($index, $event) => {
+        let cardToAnimate = document.getElementById("watchlist" + $index);
+        cardToAnimate.classList.add("animatedslow", "fadeOutDown");
         let divWithScrollProp = document.getElementsByClassName("snap-card")[0];
         $scope.sLeft = divWithScrollProp.scrollLeft;
         MovieListFactory.deleteMovieFromWatchlist($scope.watchListMovies[$index].id).then(() => {

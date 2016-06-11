@@ -9,8 +9,15 @@
  */
 
 .animated {
-  -webkit-animation-duration: .2s;
-  animation-duration: .2s;
+  -webkit-animation-duration: .1s;
+  animation-duration: .1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.animatedslow {
+  -webkit-animation-duration: .4s;
+  animation-duration: .4s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
@@ -29,8 +36,8 @@
 .animated.flipOutY,
 .animated.bounceIn,
 .animated.bounceOut {
-  -webkit-animation-duration: .1s;
-  animation-duration: .1s;
+  -webkit-animation-duration: .6s;
+  animation-duration: .6s;
 }
 
 @-webkit-keyframes bounce {
