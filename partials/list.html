@@ -12,9 +12,9 @@
 
 
 <div class="movie-display">
-    <div class="card" id="no-movies" ng-show="noMoviesBack"> 
+    <div class="card" id="no-movies" ng-show="noMoviesBack">
       <div class="oops-circle">
-        <img src="img/movie-dog2.jpg">
+        <img ng-src="img/movie-dog2.jpg">
       </div>
       <div class="card-content-no-movies teal">
         <p>Listen.</p><p>{{searchText}}... really? I searched and there was nothing like that.</p><p>Search better.</p>
@@ -37,9 +37,9 @@
           <p>{{movie.Year}}</p>
         </div>
       </div>
-  
-      
-       
+
+
+
 
 
       <div class="fixed-action-btn horizontal">
@@ -62,7 +62,7 @@
       <a class="btn-floating btn-large teal more-button" ng-click="showMoreMovies()" ng-class="{disabled: disableMoreButton}" ng-show="$last">
         <i class="large material-icons">chevron_right</i>
       </a>
-    </div>  
+    </div>
 
-    
+
   </div>
