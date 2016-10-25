@@ -12,7 +12,7 @@
     padding: 2px;
     height: 200px;
     width: 50%;
-    overflow-y: auto;
+    overflow: hidden;
     border-radius: 10px;
 
     .btn-floating {
@@ -21,7 +21,7 @@
         top: 5px;
         right: 5px;
     }
-    
+
     .mockmodal-content {
         display: inline-block;
         margin: 6.7%;
@@ -30,7 +30,7 @@
     }
 
     h4:nth-of-type(1){
-        font-family: 'Amatic SC', cursive; 
+        font-family: 'Amatic SC', cursive;
         font-size: 35px;
     }
 

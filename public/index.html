@@ -69,7 +69,7 @@
   <!-- BEGINNING OF NAV -->
   <div ng-include="'./partials/nav.html'"></div>
   <!-- END OF NAV BAR -->
-  
+
 
   <!-- CONTAINER FOR VIEW AND NEW -->
   <div class="main-container-bg container"><div id="main-container" class="main-container-movie container z-depth-3" ng-view></div></div>
@@ -83,17 +83,16 @@
   <script src="lib/node_modules/ng-focus-if/focusIf.min.js"></script>
   <!-- Angular Route: Latest compiled and minified JavaScript -->
   <script src="lib/bower_components/angular-route/angular-route.min.js"></script>
-  <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-  <script src="lib/bower_components/angularfire/dist/angularfire.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
   <script src="lib/bower_components/slick-carousel/slick/slick.min.js"></script>
   <script src="lib/bower_components/angular-slick-carousel/dist/angular-slick.min.js"></script>
-  <script src="lib/bower_components/angularfire/dist/angularfire.min.js"></script>
   <!-- Materialize: Latest compiled and minified JavaScript -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.1.8/angular-materialize.min.js"></script>
   <!-- APP FIRST -->
   <script type="text/javascript" src="app/app.js"></script>
   <!-- FACTORIES SECOND -->
+  <script type="text/javascript" src="app/data/fireinit.js"></script>
   <script type="text/javascript" src="app/factories/InterceptorFactory.js"></script>
   <script type="text/javascript" src="app/factories/AuthFactory.js"></script>
   <script type="text/javascript" src="app/factories/APIFactory.js"></script>

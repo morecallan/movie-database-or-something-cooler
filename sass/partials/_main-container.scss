@@ -12,10 +12,12 @@
     z-index: 1;
     -webkit-filter: opacity(.7);
     -webkit-filter: invert(1);
+    overflow: hidden !important;
 }
 
 #main-container {
-    width: 100%;
+    width: 90%;
+    overflow: hidden !important;
 }
 
 .main-container-movie {

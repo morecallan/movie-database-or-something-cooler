@@ -1,12 +1,11 @@
 "use strict";
 
 
-app.controller('LoginCtrl', function ($scope, $location, $rootScope, firebaseURL, AuthFactory) {
+app.controller('LoginCtrl', function ($scope, $location, $rootScope, AuthFactory) {
 
     /********************************************
     **        Variables for PAGE VIEW          **
     ********************************************/
-    let ref = new Firebase(firebaseURL);
 
     $scope.userError = false;
     $scope.userEditMode = false;
@@ -18,11 +17,11 @@ app.controller('LoginCtrl', function ($scope, $location, $rootScope, firebaseURL
     };
 
 
-    if($location.path() === "/login"){
+    if($location.path().includes("/login")){
         $rootScope.modeLogin = true;
     }
 
-    if($location.path() === "/register"){
+    if($location.path().includes("/register")){
         $rootScope.modeLogin = false;
     }
 
@@ -33,39 +32,34 @@ app.controller('LoginCtrl', function ($scope, $location, $rootScope, firebaseURL
     };
 
     if($location.path() === "/logout"){
-        ref.unauth();
+        AuthFactory.logout();
         $rootScope.isActive = false;
     }
 
 
-    $scope.register = (authFactory) => {
-        ref.createUser({
-            email: $rootScope.account.email,
-            password: $rootScope.account.password
-        }, (error, userData) => {
-            if (error) {
-                $scope.errorMessage = error.message;
-                $scope.userError = true;
-                $scope.$apply();
-            } else if (userData) {
-                $scope.login();
-            }
-        });
+    $scope.register = () => {
+      AuthFactory.registerWithEmail($rootScope.account.email, $rootScope.account.password)
+        .then((userData)=> {
+          $scope.login();
+        })
+        .catch((error) => {
+          $scope.errorMessage = error.message;
+          $scope.userError = true;
+        })
     };
+
 
     $scope.login = () => {
         AuthFactory
         .authenticate($rootScope.account)
         .then((userCreds) => {
-            $scope.$apply(function() {
-                $location.path("/watchlist");
-                $rootScope.isActive = true;
-            });
+            $location.path("/watchlist");
+            $scope.$apply();
+            $rootScope.isActive = true;
         })
         .catch((error) => {
                 $scope.errorMessage = error.message;
                 $scope.userError = true;
-                $scope.$apply();
         });
     };
 
@@ -73,22 +67,20 @@ app.controller('LoginCtrl', function ($scope, $location, $rootScope, firebaseURL
         AuthFactory
         .authenticateGoogle()
         .then((userCreds) => {
-            $scope.$apply(function() {
-                $location.path("/watchlist");
-                $rootScope.isActive = true;
-            });
+            $location.path("/watchlist");
+            $scope.$apply();
+            $rootScope.isActive = true;
         })
         .catch((error) => {
-                $scope.errorMessage = error.message;
-                $scope.userError = true;
-                $scope.$apply();
+            $scope.errorMessage = error.message;
+            $scope.userError = true;
         });
     };
 
     $scope.slickConfig = {
         enabled: true,
         autoplay: true,
-        draggable: false,  
+        draggable: false,
         autoplaySpeed: 2500,
         method: {},
         event: {

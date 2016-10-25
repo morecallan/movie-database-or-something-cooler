@@ -17,7 +17,7 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, $tim
     $rootScope.lastLoaded = false;              //USE: Make sure NG Repeat has fully populated.
     $scope.sLeft = 0;                           //USE: To track scrolling pixels.
 
-       
+
     let moviediv = document.getElementById("movieList");
 
 
@@ -59,7 +59,7 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, $tim
                     }
                     movie.detailsMode = false;
                 });
-            }   
+            }
         });
     };
 
@@ -102,7 +102,7 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, $tim
             $scope.removeAllSelectedMovieViewable();
         } else {
             $scope.removeAllSelectedMovieViewable();
-            currentMovie.detailsMode = true;   
+            currentMovie.detailsMode = true;
         }
     };
 
@@ -139,10 +139,10 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, $tim
 
 //Watchlist: Display watchlist then display star value based on rating in database.
     $scope.showWatchList = () => {
-        $rootScope.lastLoaded = false;  
+        $rootScope.lastLoaded = false;
         $scope.watchListMovies=[];
         MovieListFactory.myMovieList().then((list) => {
-            $rootScope.lastLoaded = false;  
+            $rootScope.lastLoaded = false;
             $scope.noResultsBack = false;
             if (list === null) {
                 $scope.unwatchedMoviesList = false;
@@ -190,7 +190,7 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, $tim
             Materialize.toast(`"${$scope.watchListMovies[$index].Title}" removed from watchlist!`, 4000, 'teal');
             $scope.showWatchList();
             $scope.$watch(function(){return $rootScope.lastLoaded === true;}, function(){
-                divWithScrollProp.scrollLeft =  $scope.sLeft; 
+                divWithScrollProp.scrollLeft =  $scope.sLeft;
             });
         });
     };
@@ -202,7 +202,7 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, $tim
 **              RATING MOVIE               **
 ********************************************/
 
-    //DOM CTRL: Fills in and removes fill from stars based on where the user hovers.    
+    //DOM CTRL: Fills in and removes fill from stars based on where the user hovers.
     $scope.ratingPreviewFill = (movie, index) => {
         if (!$scope.watchListMovies[movie].stars[index].filled) {
             for (var i = 0; i <= index; i++) {
@@ -215,7 +215,7 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, $tim
         }
     };
 
-    //DOM CTRL: Removes fill in for stars if user leaves the rating box.   
+    //DOM CTRL: Removes fill in for stars if user leaves the rating box.
     $scope.clearStars = (movie) => {
         if (!$scope.watchListMovies[movie].watched) {
             for (var i = 0; i < 5; i++) {
@@ -224,7 +224,7 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, $tim
         }
     };
 
-    //DOM CTRL/Watchlist: Based on the database 'rating' for the movie, display stars.   
+    //DOM CTRL/Watchlist: Based on the database 'rating' for the movie, display stars.
     $scope.parseIntoStars = (movieList) => {
         movieList.forEach(function(movie) {
             let starsToFill = parseInt(movie.Rating) - 1;
@@ -236,7 +236,7 @@ app.controller('ListExternalCtrl', function ($scope, $location, $rootScope, $tim
         $scope.watchListMovies = movieList;
     };
 
-    //Watchlist: Based on the star clicked on, update database 'rating' for the movie.   
+    //Watchlist: Based on the star clicked on, update database 'rating' for the movie.
     $scope.ratecurrentSelectedMovie = (currentMovie, index) => {
         let rating = index + 1;
         currentMovie.rating = rating;

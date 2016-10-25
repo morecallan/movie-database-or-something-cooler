@@ -47,7 +47,7 @@ slick:hover {
   padding: 2px;
   height: 200px;
   width: 50%;
-  overflow-y: auto;
+  overflow: hidden;
   border-radius: 10px; }
   .errormodal .btn-floating {
     margin: 10px 20px;
@@ -127,10 +127,12 @@ slick:hover {
   margin-left: 5%;
   z-index: 1;
   -webkit-filter: opacity(0.7);
-  -webkit-filter: invert(1); }
+  -webkit-filter: invert(1);
+  overflow: hidden !important; }
 
 #main-container {
-  width: 100%; }
+  width: 90%;
+  overflow: hidden !important; }
 
 .main-container-movie {
   z-index: 9999;

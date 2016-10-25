@@ -1,13 +1,13 @@
 "use strict";
 
 var app = angular.module("MovieDatabaseApp", ["ngRoute", "focus-if", "slickCarousel"])
-    .constant("firebaseURL", "https://supercoolmoviedb.firebaseio.com/");
+    .constant("firebaseURL", "https://movie-database-1335.firebaseio.com/");
 
 let isAuth = (AuthFactory) => new Promise((resolve, reject) => {
     if (AuthFactory.isAuthenticated()) {
         resolve();
     } else {
-        reject();    
+        reject();
     }
 });
 
@@ -41,10 +41,8 @@ app.config(function($routeProvider) {
             resolve: {isAuth}
         })
         .when("/watchlist",{
-            templateUrl: "partials/watchlist.html",
-            controller:  "ListExternalCtrl",
-            resolve: {isAuth},
-            reloadOnSearch: false
+            templateUrl: "partials/watchList.html",
+            controller:  "ListExternalCtrl"
         })
         .when("/login", {
             templateUrl: "partials/login-reg.html",
@@ -58,44 +56,18 @@ app.config(function($routeProvider) {
             templateUrl: "partials/login-reg.html",
             controller:  "LoginCtrl"
         })
-        .otherwise("/"); 
+        .otherwise("/");
 });
 
-app.run(($location) => {
-    let watchlistRef = new Firebase("https://supercoolmoviedb.firebaseio.com/");
-    watchlistRef.unauth();
+app.run(($location, fireconfig, AuthFactory) => {
 
-    watchlistRef.onAuth(authData => {
-        if(!authData) {
-            $location.path("/login");
-        }
-    });
+  firebase.initializeApp(fireconfig.fireconfig);
+
+  isAuth()
+  .then(() => {
+    $location.path("/watchlist");
+  })
+  .catch(() => {
+    $location.path("/login");
+  })
 });
-
-
-function onSignIn(googleUser) {
-  var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  console.log('Email: ' + profile.getEmail());
-}
-
-
-function onSuccess(googleUser) {
-  console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-}
-function onFailure(error) {
-  console.log(error);
-}
-function renderButton() {
-  gapi.signin2.render('my-signin2', {
-    'scope': 'profile email',
-    'width': 240,
-    'height': 50,
-    'longtitle': true,
-    'theme': 'dark',
-    'onsuccess': onSuccess,
-    'onfailure': onFailure
-  });
-}

@@ -1,3 +1,4 @@
-lib/bower_components
-lib/node_modules
+public/lib/bower_components
+public/lib/node_modules
+public/data
 .DS_Store
